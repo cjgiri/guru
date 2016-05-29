@@ -1,34 +1,38 @@
-# FresherNote
+# Guru
 
-[Heroku link][heroku] **NB:** This should be a link to your production site
+[Heroku link][heroku]
 
 [heroku]: http://www.herokuapp.com
 
 ## Minimum Viable Product
 
-FresherNote is a web application inspired by Evernote that will be build using Ruby on Rails and React.js.  By the end of Week 9, this app will, at a minimum, satisfy the following criteria:
+<!-- FresherNote is a web application inspired by Evernote that will be build using Ruby on Rails and React.js.  By the end of Week 9, this app will, at a minimum, satisfy the following criteria: -->
+
+Guru is a lyric annotation app inspired by Genius and built on Ruby on Rails and React. When complete, it will
+at minimum meet the following criteria:
 
 - [ ] New account creation, login, and guest/demo login
 - [ ] Smooth, bug-free navigation
 - [ ] Adequate seed data to demonstrate the site's features
-- [ ] The minimally necessary features for an Evernote-inspired site: note creation and saving, note editing, and notes organized into notebooks
+- [ ] Core lyric upload and annotation functionality to match
 - [ ] Hosting on Heroku
-- [ ] CSS styling that is satisfactorily visually appealing
-- [ ] A production README, replacing this README (**NB**: check out the [sample production README](https://github.com/appacademy/sample-project-proposal/blob/master/docs/production_readme.md) -- you'll write this later)
+- [ ] Beautiful CSS
+- [ ] A production README, replacing this README
 
 ## Product Goals and Priorities
 
-FresherNote will allow users to do the following:
+<!-- FresherNote will allow users to do the following: -->
+Guru will allow users to do the following:
 
 <!-- This is a Markdown checklist. Use it to keep track of your
 progress. Put an x between the brackets for a checkmark: [x] -->
 
 - [ ] Create an account (MVP)
 - [ ] Log in / Log out, including as a Guest/Demo User (MVP)
-- [ ] Create, read, edit, and delete notes (MVP)
-- [ ] Organize notes within Notebooks (MVP)
-- [ ] Tag notes with multiple tags (expected feature, but not MVP)
-- [ ] Apply complex styling to notes while editing (expected feature, but not MVP)
+- [ ] Create, read, edit, and delete lyrics (MVP)
+- [ ] Create, read, edit, and delete annotations using text highlighting for selection (MVP)
+- [ ] Add upvoteable comments to annotations and lyrics (expected feature, but not MVP)
+- [ ] Allow music upload for playback on lyric show page (expected feature, but not MVP)
 
 ## Design Docs
 * [View Wireframes][views]
