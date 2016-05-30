@@ -6,22 +6,20 @@
 
 ## Minimum Viable Product
 
-<!-- FresherNote is a web application inspired by Evernote that will be build using Ruby on Rails and React.js.  By the end of Week 9, this app will, at a minimum, satisfy the following criteria: -->
 
-Guru is a lyric annotation app inspired by Genius and built on Ruby on Rails and React. When complete, it will
-at minimum meet the following criteria:
+
+Guru is a lyric annotation app inspired by Genius and built on Ruby on Rails and React. When complete, it will at minimum meet the following criteria:
 
 - [ ] New account creation, login, and guest/demo login
 - [ ] Smooth, bug-free navigation
 - [ ] Adequate seed data to demonstrate the site's features
-- [ ] Core lyric upload and annotation functionality to match
+- [ ] Core lyric upload and annotation functionality to match Genius
 - [ ] Hosting on Heroku
 - [ ] Beautiful CSS
 - [ ] A production README, replacing this README
 
 ## Product Goals and Priorities
 
-<!-- FresherNote will allow users to do the following: -->
 Guru will allow users to do the following:
 
 <!-- This is a Markdown checklist. Use it to keep track of your
@@ -31,8 +29,8 @@ progress. Put an x between the brackets for a checkmark: [x] -->
 - [ ] Log in / Log out, including as a Guest/Demo User (MVP)
 - [ ] Create, read, edit, and delete lyrics (MVP)
 - [ ] Create, read, edit, and delete annotations using text highlighting for selection (MVP)
-- [ ] Add upvoteable comments to annotations and lyrics (expected feature, but not MVP)
-- [ ] Allow music upload for playback on lyric show page (expected feature, but not MVP)
+- [ ] Allow music upload for playback on lyric show page (hopeful feature, but not MVP)
+- [ ] Add upvoteable comments to annotations and lyrics (hopeful feature, but not MVP)
 
 ## Design Docs
 * [View Wireframes][views]
@@ -59,31 +57,31 @@ progress. Put an x between the brackets for a checkmark: [x] -->
 - [ ] user signup/signin pages
 - [ ] blank landing page after signin
 
-### Phase 2: Notes Model, API, and basic APIUtil (1.5 days)
+### Phase 2: Lyrics Model, API, and basic APIUtil (1 days)
 
-**Objective:** Notes can be created, read, edited and destroyed through
+**Objective:** Lyrics can be created, read, edited and destroyed through
 the API.
 
-- [ ] create `Note` model
+- [ ] create `Lyric` model
 - [ ] seed the database with a small amount of test data
-- [ ] CRUD API for notes (`NotesController`)
-- [ ] jBuilder views for notes
+- [ ] CRUD API for lyrics (`LyricsController`)
+- [ ] jBuilder views for lyrics
 - [ ] setup Webpack & Flux scaffold
 - [ ] setup `APIUtil` to interact with the API
 - [ ] test out API interaction in the console.
 
-### Phase 3: Flux Architecture and Router (1.5 days)
+### Phase 3: Flux Architecture and Router (1 days)
 
-**Objective:** Notes can be created, read, edited and destroyed with the
+**Objective:** Lyrics can be created, read, edited and destroyed with the
 user interface.
 
 - [ ] setup the flux loop with skeleton files
 - [ ] setup React Router
-- implement each note component, building out the flux loop as needed.
-  - [ ] `NotesIndex`
-  - [ ] `NoteIndexItem`
-  - [ ] `NoteForm`
-- [ ] save Notes to the DB when the form loses focus or is left idle
+- implement each lyric component, building out the flux loop as needed.
+  - [ ] `LyricsIndex`
+  - [ ] `LyricIndexItem`
+  - [ ] `LyricForm`
+- [ ] save Lyrics to the DB when the form loses focus or is left idle
   after editing.
 
 ### Phase 4: Start Styling (0.5 days)
@@ -94,42 +92,19 @@ user interface.
 - [ ] position elements on the page
 - [ ] add basic colors & styles
 
-### Phase 5: Notebooks (1 day)
+### Phase 5: Annotations (2.5 days)
 
-**Objective:** Notes belong to Notebooks, and can be viewed by notebook.
+**Objective:** Annotations can be made on and viewed by lyric.
 
-- [ ] create `Notebook` model
+- [ ] create `Annotation` model
 - build out API, Flux loop, and components for:
-  - [ ] Notebook CRUD
-  - [ ] adding notes requires a notebook
-  - [ ] moving notes to a different notebook
-  - [ ] viewing notes by notebook
+  - [ ] Annotation CRUD
+  - [ ] annotations can only be added to lyrics, cannot override existing annotations
+  - [ ] annotation selection is done directly from in-lyric links
 - Use CSS to style new views
 
-Phase 3 adds organization to the Notes. Notes belong to a Notebook,
-which has its own `Index` view.
 
-### Phase 6: Tags (1.5 days)
-
-**Objective:** Notes can be tagged with multiple tags, and tags are searchable.
-
-- [ ] create `Tag` model and join table
-- build out API, Flux loop, and components for:
-  - [ ] fetching tags for notebook
-  - [ ] adding tags to notebook
-  - [ ] creating tags while adding to notebooks
-  - [ ] searching notebooks by tag
-- [ ] Style new elements
-
-### Phase 7: Allow Complex Styling in Notes (0.5 days)
-
-**objective:** Enable complex styling of notes.
-
-- [ ] Integrate `react-quill` (based on Quill.js).
-- [ ] Use Rails helpers to sanitize HTML before rendering.
-- [ ] Style the new Quill elements.
-
-### Phase 8: Styling Cleanup and Seeding (1 day)
+### Phase 6: Styling Cleanup and Seeding (1.5 day)
 
 **objective:** Make the site feel more cohesive and awesome.
 
@@ -138,11 +113,10 @@ which has its own `Index` view.
 - [ ] Add modals, transitions, and other styling flourishes.
 
 ### Bonus Features (TBD)
-- [ ] Search through notes for blocks of text
-- [ ] Pagination / infinite scroll for Notes Index
-- [ ] Set reminders on notes
-- [ ] Changelogs for Notes
-- [ ] Multiple sessions
+- [ ] Enable video link embeds to play music with on lyric show
+- [ ] Add upvoteable comments to lyrics
+- [ ] Add upvoteable comments to annotations
+- [ ] Pagination / infinite scroll for Lyrics Index
 
 [phase-one]: ./docs/phases/phase1.md
 [phase-two]: ./docs/phases/phase2.md
