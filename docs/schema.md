@@ -17,6 +17,7 @@ column name | data type | details
 id          | integer   | not null, primary key
 author_id   | integer   | not null, foreign key (references users), indexed
 title       | string    | not null
+cover_url   | string    | not null
 artist      | string    | not null
 album       | string    |
 content     | text      | not null

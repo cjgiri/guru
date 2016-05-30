@@ -6,17 +6,17 @@
 ## New Session
 ![new-session]
 
-## NotesIndex / NoteIndexItem / NoteForm
-![notes]
+## LyricDetail/AnnotationForm/AnnotationDetail
+![annotations]
 
-## NotebooksIndex / NotebookIndexItem
-![notebooks]
+## LyricsIndex / LyricIndexItem
+![lyrics]
 
-## NotebookForm
-![notebook-form]
+## LyricForm
+![new-lyric]
 
 [new-user]: ./wireframes/new_user.png
 [new-session]: ./wireframes/new_session.png
-[notes]: ./wireframes/root_notes.png
-[notebooks]: ./wireframes/root_notebooks.png
-[notebook-form]: ./wireframes/notebook_form.png
+[annotations]: ./wireframes/lyric_with_annotation_detail_and_form.png
+[lyrics]: ./wireframes/lyric_index.png
+[lyric-form]: ./wireframes/new_lyric.png
