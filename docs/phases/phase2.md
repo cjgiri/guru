@@ -1,4 +1,4 @@
-# Phase 2: Flux Architecture and Note CRUD (2 days)
+# Phase 2: Flux Architecture and Lyric CRUD / style (1.5 days)
 
 ## Rails
 ### Models
@@ -9,30 +9,29 @@
 
 ## Flux
 ### Views (React Components)
-* NotesIndex
-  - NotesIndexItem
-* NoteForm
+* LyricsIndex
+  - LyricsIndexItem
+* LyricForm
 
 ### Stores
-* Note
+* Lyric
 
 ### Actions
-* ApiActions.receiveAllNotes -> triggered by ApiUtil
-* ApiActions.receiveSingleNote
-* ApiActions.deleteNote
-* NoteActions.fetchAllNotes -> triggers ApiUtil
-* NoteActions.fetchSingleNote 
-* NoteActions.createNote
-* NoteActions.editNote 
-* NoteActions.destroyNote
+* ApiActions.receiveAllLyrics -> triggered by ApiUtil
+* ApiActions.receiveSingleLyric
+* ApiActions.deleteLyric
+* LyricActions.fetchAllLyrics -> triggers ApiUtil
+* LyricActions.fetchSingleLyric
+* LyricActions.createLyric
+* LyricActions.editLyric
+* LyricActions.destroyLyric
 
 ### ApiUtil
-* ApiUtil.fetchAllNotes
-* ApiUtil.fetchSingleNote
-* ApiUtil.createNote
-* ApiUtil.editNote
-* ApiUtil.destroyNote
+* ApiUtil.fetchAllLyrics
+* ApiUtil.fetchSingleLyric
+* ApiUtil.createLyric
+* ApiUtil.editLyric
+* ApiUtil.destroyLyric
 
 ## Gems/Libraries
 * Flux Dispatcher (npm)
-* Twitter Bootstrap

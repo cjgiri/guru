@@ -1,20 +1,20 @@
-# Phase 1: User Authentication, Note Model and JSON API
+# Phase 1: User Authentication, Lyric Model and JSON API (1.5 days)
 
 ## Rails
 ### Models
 * User
-* Note
+* Lyric
 
 ### Controllers
 * UsersController (create, new)
 * SessionsController (create, new, destroy)
-* Api::NotesController (create, destroy, index, show, update)
+* Api::LyricsController (create, destroy, index, show, update)
 
 ### Views
 * users/new.html.erb
 * session/new.html.erb
-* notes/index.json.jbuilder
-* notes/show.json.jbuilder
+* lyrics/index.json.jbuilder
+* lyrics/show.json.jbuilder
 
 ## Flux
 ### Views (React Components)

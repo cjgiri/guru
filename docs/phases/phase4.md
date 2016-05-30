@@ -1,4 +1,4 @@
-# Phase 4: Allow Complex Styling in Notes (1 day)
+# Phase 5: Final styling and possible Features (1.5 day)
 
 ## Rails
 ### Models
@@ -10,9 +10,13 @@
 ## Flux
 ### Views (React Components)
 
+
 ### Stores
 
 ### Actions
 
+
+### ApiUtil
+
+
 ## Gems/Libraries
-* react-quill (npm)
