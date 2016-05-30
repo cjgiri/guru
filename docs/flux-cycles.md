@@ -12,108 +12,109 @@ because once you start implementing your flux loops, that's precisely
 what you'll need to do.
 
 
-## Note Cycles
+## Annotations Cycles
 
-### Notes API Request Actions
+### Annotations API Request Actions
 
-* `fetchAllNotes`
-  0. invoked from `NotesIndex` `didMount`/`willReceiveProps`
-  0. `GET /api/notes` is called.
-  0. `receiveAllNotes` is set as the callback.
+* `fetchAllAnnotations`
+  0. invoked from `AnnotationsIndex` `didMount`/`willReceiveProps`
+  0. `GET /api/annotations` is called.
+  0. `receiveAllAnnotations` is set as the callback.
 
-* `createNote`
-  0. invoked from new note button `onClick`
-  0. `POST /api/notes` is called.
-  0. `receiveSingleNote` is set as the callback.
+* `createAnnotations`
+  0. invoked from new annotation button `onClick`
+  0. `POST /api/annotations` is called.
+  0. `receiveSingleAnnotations` is set as the callback.
 
-* `fetchSingleNote`
-  0. invoked from `NoteDetail` `didMount`/`willReceiveProps`
-  0. `GET /api/notes/:id` is called.
-  0. `receiveSingleNote` is set as the callback.
+* `fetchSingleAnnotations`
+  0. invoked from `AnnotationsDetail` `didMount`/`willReceiveProps`
+  0. `GET /api/annotations/:id` is called.
+  0. `receiveSingleAnnotations` is set as the callback.
 
-* `updateNote`
-  0. invoked from `NoteForm` `onSubmit`
-  0. `POST /api/notes` is called.
-  0. `receiveSingleNote` is set as the callback.
+* `updateAnnotations`
+  0. invoked from `AnnotationEditArea` `onSubmit`
+  0. `POST /api/annotations` is called.
+  0. `receiveSingleAnnotations` is set as the callback.
 
-* `destroyNote`
-  0. invoked from delete note button `onClick`
-  0. `DELETE /api/notes/:id` is called.
-  0. `removeNote` is set as the callback.
+* `destroyAnnotations`
+  0. invoked from delete annotation button `onClick`
+  0. `DELETE /api/annotations/:id` is called.
+  0. `removeAnnotations` is set as the callback.
 
-### Notes API Response Actions
+### Annotations API Response Actions
 
-* `receiveAllNotes`
+* `receiveAllAnnotations`
   0. invoked from an API callback.
-  0. `Note` store updates `_notes` and emits change.
+  0. `Annotations` store updates `_annotations` and emits change.
 
-* `receiveSingleNote`
+* `receiveSingleAnnotations`
   0. invoked from an API callback.
-  0. `Note` store updates `_notes[id]` and emits change.
+  0. `Annotations` store updates `_annotations[id]` and emits change.
 
-* `removeNote`
+* `removeAnnotations`
   0. invoked from an API callback.
-  0. `Note` store removes `_notes[id]` and emits change.
+  0. `Annotations` store removes `_annotations[id]` and emits change.
 
 ### Store Listeners
 
-* `NotesIndex` component listens to `Note` store.
-* `NoteDetail` component listens to `Note` store.
+* `AnnotationsIndex` component listens to `Annotations` store.
+* `AnnotationsDetail` component listens to `Annotations` store.
 
 
-## Notebook Cycles
+## Lyric Cycles
 
-### Notebooks API Request Actions
+### Lyrics API Request Actions
 
-* `fetchAllNotebooks`
-  0. invoked from `NotebooksIndex` `didMount`/`willReceiveProps`
-  0. `GET /api/notebooks` is called.
-  0. `receiveAllNotebooks` is set as the callback.
+* `fetchAllLyrics`
+  0. invoked from `LyricIndex` `didMount`/`willReceiveProps`
+  0. `GET /api/lyrics` is called.
+  0. `receiveAllLyrics` is set as the callback.
 
-* `createNotebook`
-  0. invoked from new notebook button `onClick`
-  0. `POST /api/notebooks` is called.
-  0. `receiveSingleNotebook` is set as the callback.
+* `createLyric`
+  0. invoked from new lyric button `onClick`
+  0. `POST /api/lyrics` is called.
+  0. `receiveSingleLyric` is set as the callback.
 
-* `fetchSingleNotebook`
-  0. invoked from `NotebookDetail` `didMount`/`willReceiveProps`
-  0. `GET /api/notebooks/:id` is called.
-  0. `receiveSingleNotebook` is set as the callback.
+* `fetchSingleLyric`
+  0. invoked from `LyricDetail` `didMount`/`willReceiveProps`
+  0. `GET /api/lyrics/:id` is called.
+  0. `receiveSingleLyric` is set as the callback.
 
-* `updateNotebook`
-  0. invoked from `NotebookForm` `onSubmit`
-  0. `POST /api/notebooks` is called.
-  0. `receiveSingleNotebook` is set as the callback.
+* `updateLyric`
+  0. invoked from `LyricForm` `onSubmit`
+  0. `POST /api/lyrics` is called.
+  0. `receiveSingleLyric` is set as the callback.
 
-* `destroyNotebook`
-  0. invoked from delete notebook button `onClick`
-  0. `DELETE /api/notebooks/:id` is called.
-  0. `removeNotebook` is set as the callback.
+* `destroyLyric`
+  0. invoked from delete lyric button `onClick`
+  0. `DELETE /api/lyrics/:id` is called.
+  0. `removeLyric` is set as the callback.
 
-### Notebooks API Response Actions
+### Lyrics API Response Actions
 
-* `receiveAllNotebooks`
+* `receiveAllLyrics`
   0. invoked from an API callback.
-  0. `Notebook` store updates `_notebooks` and emits change.
+  0. `Lyric` store updates `_lyrics` and emits change.
 
-* `receiveSingleNotebook`
+* `receiveSingleLyric`
   0. invoked from an API callback.
-  0. `Notebook` store updates `_notebooks[id]` and emits change.
+  0. `Lyric` store updates `_lyrics[id]` and emits change.
 
-* `removeNotebook`
+
+* `removeLyric`
   0. invoked from an API callback.
-  0. `Notebook` store removes `_notebooks[id]` and emits change.
+  0. `Lyric` store removes `_lyrics[id]` and emits change.
 
 ### Store Listeners
 
-* `NotebooksIndex` component listens to `Notebook` store.
+* `LyricIndex` component listens to `Lyric` store.
 
 
 ## SearchSuggestion Cycles
 
 * `fetchSearchSuggestions`
-  0. invoked from `NoteSearchBar` `onChange` when there is text
-  0. `GET /api/notes` is called with `text` param.
+  0. invoked from `LyricSearchBar` `onChange` when there is text
+  0. `GET /api/lyrics` is called with `text` param.
   0. `receiveSearchSuggestions` is set as the callback.
 
 * `receiveSearchSuggestions`
@@ -121,7 +122,7 @@ what you'll need to do.
   0. `SearchSuggestion` store updates `_suggestions` and emits change.
 
 * `removeSearchSuggestions`
-  0. invoked from `NoteSearchBar` `onChange` when empty
+  0. invoked from `LyricSearchBar` `onChange` when empty
   0. `SearchSuggestion` store resets `_suggestions` and emits change.
 
 ### Store Listeners

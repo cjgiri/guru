@@ -1,13 +1,10 @@
 ## Component Hierarchy
 
 * `App`
-  * `SearchIndex`
-  * `NotebooksIndex`
-    * `NotebookIndexItem`
-  * `NotebookForm`
-  * `NotesIndex`
-    * `NoteForm`
-    * `NoteIndexItem`
-  * `NoteDetail`
-    * `NoteTags`
-    * `NoteEditArea`
+  * `LyricIndex`
+    * `LyricSearchItem`
+    * `LyricIndexItem`
+  * `LyricDetail`
+  * `LyricForm`
+  * `AnnotationDetail`
+    * `AnnotationEditArea`
