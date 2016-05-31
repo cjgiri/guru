@@ -2,7 +2,8 @@ class Api::SessionsController < ApplicationController
 
   def create
     # TODO call find by email or username based on context
-    @user = User.username_and_pass(params[:user][:username], params[:user][:password])
+    debugger
+    @user = User.find_by_username_and_pass(params[:user][:username], params[:user][:password])
 		if @user
 			login(@user)
 			render "api/users/show"

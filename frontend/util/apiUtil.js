@@ -1,5 +1,5 @@
-var Dispatcher = require('../dispatcher/dispatcher',
-    UserActions = require('..actions/user_actions');
+var Dispatcher = require('../dispatcher/dispatcher'),
+    UserActions = require('../actions/user_actions');
 
 module.exports={
   loginUser: function(credentials){
