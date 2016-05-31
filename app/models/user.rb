@@ -22,8 +22,6 @@ class User < ActiveRecord::Base
   after_initialize :ensure_session_token
   before_validation :ensure_session_token_uniqueness
 
-  private
-
   def self.find_by_username_and_pass(username, password)
     user = User.find_by(username: username)
     return nil unless user && user.valid_password?(password)
@@ -40,11 +38,12 @@ class User < ActiveRecord::Base
     BCrypt::Password.new(self.password_digest) == password
   end
 
-
   def password=(password)
     @password = password
     self.password_digest=BCrypt::Password.create(password)
   end
+
+  private
 
   def ensure_session_token
     self.session_token ||= new_session_token
