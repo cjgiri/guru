@@ -15,6 +15,7 @@
 /tmp
 
 node_modules
+notes.txt
 
 # Ignore bundle
 bundle.js
