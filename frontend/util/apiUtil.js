@@ -2,7 +2,17 @@ var Dispatcher = require('../dispatcher/dispatcher'),
     UserActions = require('../actions/user_actions');
 
 module.exports={
+  createUser: function(credentials){
+    // $.ajax({
+    //   url: "api/session",
+    //   type: "POST",
+    //   data: {user: credentials},
+    //   success: UserActions.receiveCurrentUser,
+    //   error: UserActions.handleError
+    // })
+  },
   loginUser: function(credentials){
+
     $.ajax({
       url: "api/session",
       type: "POST",
@@ -19,12 +29,13 @@ module.exports={
       error: UserActions.handleError
     })
   },
-  fetchCurrentUser: function(){
+  fetchCurrentUser: function(complete){
     $.ajax({
 			url: '/api/session',
 			method: 'GET',
 			success: UserActions.receiveCurrentUser,
-			error: UserActions.handleError
+			error: UserActions.handleError,
+      complete: complete
 		});
 	},
 }

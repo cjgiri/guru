@@ -16,6 +16,7 @@
 
 node_modules
 notes.txt
+.DS_Store
 
 # Ignore bundle
 bundle.js
