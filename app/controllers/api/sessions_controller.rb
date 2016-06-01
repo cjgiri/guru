@@ -20,7 +20,7 @@ class Api::SessionsController < ApplicationController
 			render "api/users/show"
 		else
 			@errors = ['no one logged in']
-			render "api/shared/error", status: 404
+			render json: @errors 
 		end
 	end
 

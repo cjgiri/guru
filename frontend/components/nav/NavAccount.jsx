@@ -13,14 +13,12 @@ var NavAccount = React.createClass({
     UserStore.addListener(this.updateUser);
   },
   updateUser:function () {
+    debugger
     this.setState({ user: UserStore.currentUser()});
-  },
-  signUp: function(){
-  },
-  signIn: function(){
   },
   signOut:function(){
     ApiUtil.logoutUser();
+    debugger
   },
   toggleLoginModal:function(){
     var modalVal = this.state.modal;
@@ -31,8 +29,9 @@ var NavAccount = React.createClass({
 
   },
   render: function(){
-    if(UserStore.isUserLoggedIn() === true){
-      var content = []
+    // if(UserStore.isUserLoggedIn() === true){
+    if(this.state.user.username){
+
       return(
         <div className="nav-user-actions">
           <a onClick={this.signOut}>Sign Out</a>

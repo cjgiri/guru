@@ -35,6 +35,8 @@ var LoginForm = React.createClass({
     } else{
       credentials.email = this.state.name;
     }
+    // TODO toggle modal/ show errors on failure to login 
+    this.props.toggleLoginModal()
     ApiUtil.loginUser(credentials);
   },
   outerClick:function(e){

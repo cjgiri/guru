@@ -10,5 +10,10 @@ module.exports = {
   },
   handleError:function(e){
     debugger
+  },
+  removeCurrentUser:function(){
+    Dispatcher.dispatch({
+      actionType: Constants.LOGOUT
+    })
   }
 };
