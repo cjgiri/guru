@@ -9,24 +9,17 @@ var ReactRouter = require('react-router'),
     hashHistory = ReactRouter.hashHistory;
 //Components
 var LoginForm = require('./components/LoginForm'),
-    NavBar = require('./components/NavBar');
+    NavBar = require('./components/nav/NavBar');
 
 //debugging
 var ApiUtil = require('./util/apiUtil');
 var UserStore = require("./stores/user_store");
 
 var App = React.createClass({
-  // mixins: [CurrentUserState],
   render: function(){
-    debugger
-    if(UserStore.isUserLoggedIn() === true){
-      debugger
-      var greeting = "Hello," + UserStore.currentUser();
-    }
     return (
       <div>
-        <header><h1>guru</h1></header>
-        {greeting}
+        <NavBar/>
         {this.props.children}
       </div>
     );
@@ -65,8 +58,9 @@ function _attemptLogin(nextState, replace, asyncDoneCallback) {
 
 var Router = (
   <Router history={hashHistory}>
-    <Route path="/" component={App} onEnter={_attemptLogin}/>
-    <Route path="/login" component={LoginForm}></Route>
+    <Route path="/" component={App} onEnter={_attemptLogin}>
+      <Route path="/login" component={LoginForm}></Route>
+    </Route>
   </Router>
 );
 

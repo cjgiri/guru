@@ -3,7 +3,6 @@ var Dispatcher = require('../dispatcher/dispatcher'),
 
 module.exports = {
   receiveCurrentUser:function(user) {
-    console.log(user);
     Dispatcher.dispatch({
       actionType: Constants.LOGIN,
       user: user
@@ -11,6 +10,5 @@ module.exports = {
   },
   handleError:function(e){
     debugger
-    console.log(e);
   }
 };

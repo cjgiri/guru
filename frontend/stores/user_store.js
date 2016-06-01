@@ -13,7 +13,7 @@ UserStore.currentUserHasBeenFetched = function(){
 };
 
 UserStore.isUserLoggedIn = function(){
-  return !!_currentUser.user;
+  return !!_currentUser.username;
 };
 
 UserStore.currentUser = function(){
