@@ -26,7 +26,6 @@ UserStore.logout = function(){
   _currentUser = {};
 };
 UserStore.login = function(user){
-  debugger
   _currentUser = user;
   _currentUserHasBeenFetched = true;
 };

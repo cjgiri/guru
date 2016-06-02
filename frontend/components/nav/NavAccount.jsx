@@ -3,6 +3,7 @@ var React = require("react"),
     hashHistory = ReactRouter.hashHistory,
     UserStore = require('../../stores/user_store'),
     LoginForm = require("../LoginForm"),
+    SignupForm = require("../SignupForm"),
     ApiUtil = require("../../util/apiUtil");
 
 var NavAccount = React.createClass({
@@ -13,20 +14,20 @@ var NavAccount = React.createClass({
     UserStore.addListener(this.updateUser);
   },
   updateUser:function () {
-    debugger
     this.setState({ user: UserStore.currentUser()});
   },
   signOut:function(){
     ApiUtil.logoutUser();
-    debugger
   },
   toggleLoginModal:function(){
     var modalVal = this.state.modal;
-    modalVal = (modalVal === "none") ? "login" : "none";
+    modalVal = (modalVal === "login") ? "none" : "login";
     this.setState({modal: modalVal});
   },
   toggleSignUpModal:function(){
-
+    var modalVal = this.state.modal;
+    modalVal = (modalVal === "signup") ? "none" : "signup";
+    this.setState({modal: modalVal});
   },
   render: function(){
     // if(UserStore.isUserLoggedIn() === true){
@@ -40,9 +41,10 @@ var NavAccount = React.createClass({
     }else{
       return(
         <div className="nav-user-actions">
-          <a onClick={this.signUp}>Sign Up</a>
+          <a onClick={this.toggleSignUpModal}>Sign Up</a>
           <a onClick={this.toggleLoginModal}>Sign In</a>
           <LoginForm toggleLoginModal={this.toggleLoginModal} modal={this.state.modal}/>
+          <SignupForm toggleSignUpModal={this.toggleSignUpModal} modal={this.state.modal}/>
         </div>
       )
     }

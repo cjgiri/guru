@@ -96,7 +96,8 @@
     text-align: left;
     padding: 5px;
     background: white;
-    box-shadow: 0 0 3px #e9e9e9 inset;
+    box-shadow: 0 0 5px #e9e9e9 inset;
+    border: solid 1px #ccc;
   }
   .nav-user-actions{
     display: block;
@@ -141,6 +142,7 @@
   color: white;
   padding: 35px;
   border-radius: 3px;
+  text-align: left;
 }
 .modal-box h1{
   color: #ffff64;
@@ -158,9 +160,9 @@
 .modal-box-detail input{
   border: solid 1px #666;
   margin-bottom: 8px;
-  margin-top: 1px;
+  margin-top: 10px;
   border-radius: 1px;
-  padding: 2px;
+  padding: 5px;
 
 }
 .modal-box-detail input:focus{
@@ -169,10 +171,6 @@
 .modal-box-detail input[type="text"],input[type="password"] {
   width: 250px;
 }
-.modal-box-detail input[type="submit"] {
-  padding: 3px;
-}
 .modal-box-detail input[type="submit"]:hover {
   border: solid 1px #BBB;
-  padding: 3px;
 }
