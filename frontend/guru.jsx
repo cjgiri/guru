@@ -19,6 +19,9 @@ var ApiUtil = require('./util/apiUtil');
 var UserStore = require("./stores/user_store");
 
 var App = React.createClass({
+  componentDidMount: function () {
+    ApiUtil.fetchCurrentUser()
+  },
   render: function(){
     return (
       <div>
@@ -42,7 +45,7 @@ function _attemptLogin(nextState, replace, asyncDoneCallback) {
 
 var Router = (
   <Router history={hashHistory}>
-    <Route path="/" component={App} onEnter={_attemptLogin}>
+    <Route path="/" component={App} >
       <IndexRoute component={LyricsIndex}/>
       <Route path="new" component={NewLyric} />
       <Route path="lyrics/:lyricId" component={LyricShow} />

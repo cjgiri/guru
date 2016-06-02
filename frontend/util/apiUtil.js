@@ -25,7 +25,7 @@ module.exports={
       url: "api/user",
       type: "POST",
       data: {user: user},
-      success: UserActions.removeCurrentUser,
+      success: UserActions.receiveCurrentUser,
       error: UserActions.handleError
     })
   },

@@ -13,14 +13,11 @@ UserStore.currentUserHasBeenFetched = function(){
 };
 
 UserStore.isUserLoggedIn = function(){
-  debugger
   return !!_currentUser.username;
 };
 
 UserStore.currentUser = function(){
-  if (_currentUserHasBeenFetched) {
-    return _currentUser
-  };
+  return _currentUser
 };
 UserStore.logout = function(){
   _currentUser = {};
@@ -28,6 +25,7 @@ UserStore.logout = function(){
 UserStore.login = function(user){
   _currentUser = user;
   _currentUserHasBeenFetched = true;
+  debugger
 };
 
 UserStore.currentUserHasBeenFetched
@@ -35,6 +33,7 @@ UserStore.currentUserHasBeenFetched
 UserStore.__onDispatch = function(payload){
   switch (payload.actionType) {
     case AppConstants.LOGIN:
+      debugger
       UserStore.login(payload.user);
       UserStore.__emitChange();
       break;

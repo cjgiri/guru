@@ -22,12 +22,9 @@ var SignupForm = React.createClass({
     //   hashHistory.push("/");
     // }
   },
-  loginUser: function(){
-    ApiUtil.createUser({
-      username: this.state.username,
-      email: this.state.email,
-      password: this.state.password
-    });
+  loginUser: function(e){
+    e.preventDefault();
+    ApiUtil.createUser(this.state);
     // TODO make modal toggle on valid signup
     this.props.toggleSignUpModal()
   },

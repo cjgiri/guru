@@ -6,7 +6,7 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-# User.create!(username: "chrisG", password:"password", email:"mynewemail");
+User.create!(username: "chrisG", password:"password", email:"mynewemail");
 Lyric.create!(
   author_id: 1,
   title: "No Problem",

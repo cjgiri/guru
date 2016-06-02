@@ -33,7 +33,7 @@ var NavAccount = React.createClass({
     hashHistory.push("/new");
   },
   render: function(){
-    // if(UserStore.isUserLoggedIn() === true){
+
     if(this.state.user.username){
 
       return(

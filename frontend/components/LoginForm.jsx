@@ -28,7 +28,8 @@ var LoginForm = React.createClass({
   setName: function(e){
     this.setState({name: e.target.value})
   },
-  loginUser: function(){
+  loginUser: function(e){
+    e.preventDefault();
     var credentials={password: this.state.password};
     if (this.state.name.indexOf("@") === -1){
       credentials.username = this.state.name;

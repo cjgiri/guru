@@ -6,6 +6,7 @@ class Api::SessionsController < ApplicationController
 
     if @user
 			login(@user)
+      debugger
 			render "api/users/show"
 		else
 			@errors = ['invalid credentials']
@@ -20,7 +21,7 @@ class Api::SessionsController < ApplicationController
 			render "api/users/show"
 		else
 			@errors = ['no one logged in']
-			render json: @errors 
+			render json: @errors
 		end
 	end
 
