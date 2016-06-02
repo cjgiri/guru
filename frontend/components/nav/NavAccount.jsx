@@ -29,6 +29,9 @@ var NavAccount = React.createClass({
     modalVal = (modalVal === "signup") ? "none" : "signup";
     this.setState({modal: modalVal});
   },
+  addSong: function(){
+    hashHistory.push("/new");
+  },
   render: function(){
     // if(UserStore.isUserLoggedIn() === true){
     if(this.state.user.username){
@@ -36,6 +39,7 @@ var NavAccount = React.createClass({
       return(
         <div className="nav-user-actions">
           <a onClick={this.signOut}>Sign Out</a>
+          <a onClick={this.addSong}>Add Song</a>
         </div>
       )
     }else{

@@ -16,7 +16,7 @@
 
  html, body, header, nav, h1, a,
  ul, li, strong, main, button, i,
- section, img, div, h2, p, form,
+ section, img, div, h2, h3, p, form,
  fieldset, label, input, textarea,
  span, article, footer, time, small {
    margin: 0;
@@ -85,6 +85,7 @@
     font-size: 28px;
     text-shadow:  -2px 2px 0 #000;
     padding: 5px 0;
+    cursor: pointer;
   }
   .nav-search-holder{
     width: calc(50% - 67.5px);
@@ -220,4 +221,85 @@ textarea{
   margin-bottom: 8px;
   margin-top: 6px;
   border-radius: 1px;
+}
+
+/******************** LyricIndex *****************/
+
+.lyric-index-list{
+  position: relative;
+  width: 950px;
+  margin: auto;
+  margin: 50px auto;
+}
+.lyric-index-list h1{
+  font-size: 28px;
+  font-weight: bolder;
+}
+.lyric-index-list h2{
+  font-size: 18px;
+  font-weight: bold;
+}
+.lyric-index-list-item{
+  height: 460px;
+  width: 32%;
+  padding: 6px;
+  display: block;
+  float: left;
+  cursor: pointer;
+}
+.lyric-text-container{
+  background: black;
+  position: relative;
+  height: 100%;
+  width: 100%;
+  box-sizing: border-box;
+}
+.lyric-index-list-item-text{
+  color: white;
+  position: absolute;
+  bottom: 30px;
+  left: 15px;
+}
+
+/******************** LyricShow *****************/
+.lyrics-banner{
+  width: 100%;
+  background: black;
+  height: 290px;
+}
+.lyrics-banner-detail{
+  position: relative;
+  margin: auto;
+  width: 950px;
+  height: 100%;
+  box-sizing: border-box;
+}
+.lyrics-banner-detail-inset{
+  color: white;
+  position: absolute;
+  bottom: 30px;
+  left: 15px;
+}
+.lyrics-banner-detail h1{
+  color: #ffff64;
+  font-weight: bolder;
+  font-size: 3em;
+  padding-bottom: 5px;
+
+}
+.lyrics-banner-detail h2{
+  font-weight: bold;
+  font-size: 1.5em;
+  padding-bottom: 5px;
+}
+.lyrics-banner-detail h3{
+  font-weight: lighter;
+}
+.lyrics-content{
+  font-size: 18px;
+  width: 950px;
+  white-space: pre-wrap;
+  margin: 40px auto;
+  font-weight: lighter;
+  line-height: 1.5em;
 }

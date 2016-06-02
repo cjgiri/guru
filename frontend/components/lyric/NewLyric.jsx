@@ -1,7 +1,5 @@
 var React = require("react"),
-    ApiUtil = require("../util/apiUtil"),
-    UserStore = require("../stores/user_store"),
-    ApiUtil = require("../util/apiUtil");
+    ApiUtil = require("../../util/apiUtil");
 
 var ReactRouter = require('react-router'),
     hashHistory = ReactRouter.hashHistory;
@@ -13,7 +11,7 @@ var NewLyric = React.createClass({
       artist: "",
       title: "",
       album: "",
-      content: ""
+      lyricBody: ""
     });
   },
   setArtist: function(e){
@@ -25,13 +23,14 @@ var NewLyric = React.createClass({
   setAlbum: function(e){
     this.setState({album: e.target.value})
   },
-  setContent: function(e){
-    this.setContent({title: e.target.value})
+  setLyricBody: function(e){
+    this.setState({lyricBody: e.target.value})
   },
   submitLyric: function(){
     ApiUtil.submitLyric(this.state, function(){
       debugger
       hashHistory.push("/");
+      // id is arguments[0].id
     }.bind(this));
   },
   render:function(){

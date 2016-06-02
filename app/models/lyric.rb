@@ -13,6 +13,8 @@
 #
 
 class Lyric < ActiveRecord::Base
-  validates :title, :artist, :album, :author_id, :content, presence: true
+  validates :title, :artist, :album, :author_id, :lyric_body, presence: true
+
+  belongs_to :author, class_name:"User", foreign_key:'author_id'
 
 end

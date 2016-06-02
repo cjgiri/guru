@@ -1,7 +1,6 @@
 class Api::LyricController < ApplicationController
 
   def create
-    debugger
 		@lyric = current_user.lyrics.new(lyric_params)
 		if @lyric.save
 			render json: @lyric
@@ -15,6 +14,15 @@ class Api::LyricController < ApplicationController
 		@lyric = Lyric.find_by_id(params[:id])
 		if @lyric
 			render "api/lyrics/show"
+		else
+			render json: nil, status: 404
+		end
+	end
+
+	def index
+		@lyrics = Lyric.all
+		if @lyrics
+			render "api/lyrics/index"
 		else
 			render json: nil, status: 404
 		end

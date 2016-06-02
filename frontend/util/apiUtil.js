@@ -1,5 +1,6 @@
 var Dispatcher = require('../dispatcher/dispatcher'),
     UserActions = require('../actions/user_actions');
+    LyricServerActions = require('../actions/lyric_server_actions');
 
 module.exports={
   loginUser: function(credentials){
@@ -52,5 +53,21 @@ module.exports={
       success: callback,
       error: UserActions.handleError
     })
+  },
+  fetchLyric: function(id){
+    $.ajax({
+			url: '/api/lyric/' + id,
+			method: 'GET',
+			success: LyricServerActions.receiveLyric,
+			error: LyricServerActions.handleError
+		});
+  },
+  fetchAllLyrics: function(){
+    $.ajax({
+			url: '/api/lyric',
+			method: 'GET',
+			success: LyricServerActions.receiveLyrics,
+			error: LyricServerActions.handleError
+		});
   }
 }

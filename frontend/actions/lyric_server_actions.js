@@ -2,17 +2,19 @@ var Dispatcher = require('../dispatcher/dispatcher'),
     Constants = require('../constants/app_constants');
 
 module.exports = {
-  receiveCurrentUser:function(user) {
+  receiveLyric:function(lyric) {
     Dispatcher.dispatch({
-
+      actionType: Constants.LYRICRECEIEVED,
+      lyric: lyric
+    })
+  },
+  receiveLyrics:function(lyrics) {
+    Dispatcher.dispatch({
+      actionType: Constants.LYRICSRECEIEVED,
+      lyrics: lyrics
     })
   },
   handleError:function(e){
     debugger
-  },
-  removeCurrentUser:function(){
-    Dispatcher.dispatch({
-      actionType: Constants.LOGOUT
-    })
   }
 };

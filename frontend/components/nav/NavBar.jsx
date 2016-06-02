@@ -6,11 +6,14 @@ var React = require("react"),
 
 
 var NavBar = React.createClass({
+  toIndex:function(){
+    hashHistory.push("/");
+  },
   render: function(){
     return(
       <header className="navBar group">
         <NavSearch/>
-        <a href="/" className="navBar-logo">GURU</a>
+        <a className="navBar-logo" onClick={this.toIndex}>GURU</a>
         <NavAccount/>
       </header>
     )

@@ -10,8 +10,9 @@ var ReactRouter = require('react-router'),
 //Components
 var LoginForm = require('./components/LoginForm'),
     NavBar = require('./components/nav/NavBar'),
-    LyricsIndex = require('./components/LyricsIndex'),
-    NewLyric = require('./components/NewLyric');
+    LyricsIndex = require('./components/lyric/LyricsIndex'),
+    LyricShow = require('./components/lyric/LyricShow'),
+    NewLyric = require('./components/lyric/NewLyric');
 
 //debugging
 var ApiUtil = require('./util/apiUtil');
@@ -43,7 +44,8 @@ var Router = (
   <Router history={hashHistory}>
     <Route path="/" component={App} onEnter={_attemptLogin}>
       <IndexRoute component={LyricsIndex}/>
-      <Route path="new" component={NewLyric} onEnter={_attemptLogin}/>
+      <Route path="new" component={NewLyric} />
+      <Route path="lyrics/:lyricId" component={LyricShow} />
     </Route>
   </Router>
 );
