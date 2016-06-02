@@ -22,6 +22,15 @@ var SignupForm = React.createClass({
     //   hashHistory.push("/");
     // }
   },
+  loginUser: function(){
+    ApiUtil.createUser({
+      username: this.state.username,
+      email: this.state.email,
+      password: this.state.password
+    });
+    // TODO make modal toggle on valid signup
+    this.props.toggleSignUpModal()
+  },
   setPass: function(e){
     this.setState({password: e.target.value})
   },
@@ -32,7 +41,6 @@ var SignupForm = React.createClass({
     this.setState({email: e.target.value})
   },
   outerClick:function(e){
-
     classes = e.target.classList;
     for (var i = 0; i < classes.length; i++) {
       if (classes[i] = "modal-bg"){

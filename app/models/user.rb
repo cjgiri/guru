@@ -15,6 +15,8 @@ class User < ActiveRecord::Base
 
   attr_reader :password
 
+  has_many :lyrics, foreign_key:'author_id'
+
   validates :username, :email, :password_digest, :session_token, presence: true
   validates :username, :email, uniqueness: true
   validates :password, length: {minimum: 6}, allow_nil: :true

@@ -2,17 +2,7 @@ var Dispatcher = require('../dispatcher/dispatcher'),
     UserActions = require('../actions/user_actions');
 
 module.exports={
-  createUser: function(credentials){
-    // $.ajax({
-    //   url: "api/session",
-    //   type: "POST",
-    //   data: {user: credentials},
-    //   success: UserActions.receiveCurrentUser,
-    //   error: UserActions.handleError
-    // })
-  },
   loginUser: function(credentials){
-
     $.ajax({
       url: "api/session",
       type: "POST",
@@ -29,6 +19,15 @@ module.exports={
       error: UserActions.handleError
     })
   },
+  createUser: function(user, callback){
+    $.ajax({
+      url: "api/user",
+      type: "POST",
+      data: {user: user},
+      success: UserActions.removeCurrentUser,
+      error: UserActions.handleError
+    })
+  },
   fetchCurrentUser: function(complete){
     $.ajax({
 			url: '/api/session',
@@ -38,4 +37,20 @@ module.exports={
       complete: complete
 		});
 	},
+  submitLyric: function(data, callback){
+    $.ajax({
+      url: '/api/lyric',
+      method: 'POST',
+      data: {
+        lyric:{
+          title: data.title,
+          album: data.album,
+          artist: data.artist,
+          lyric_body: data.lyricBody
+        }
+      },
+      success: callback,
+      error: UserActions.handleError
+    })
+  }
 }

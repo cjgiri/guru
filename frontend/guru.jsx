@@ -9,7 +9,9 @@ var ReactRouter = require('react-router'),
     hashHistory = ReactRouter.hashHistory;
 //Components
 var LoginForm = require('./components/LoginForm'),
-    NavBar = require('./components/nav/NavBar');
+    NavBar = require('./components/nav/NavBar'),
+    LyricsIndex = require('./components/LyricsIndex'),
+    NewLyric = require('./components/NewLyric');
 
 //debugging
 var ApiUtil = require('./util/apiUtil');
@@ -37,6 +39,24 @@ function _attemptLogin(nextState, replace, asyncDoneCallback) {
   }
 }
 
+var Router = (
+  <Router history={hashHistory}>
+    <Route path="/" component={App} onEnter={_attemptLogin}>
+      <IndexRoute component={LyricsIndex}/>
+      <Route path="new" component={NewLyric} onEnter={_attemptLogin}/>
+    </Route>
+  </Router>
+);
+
+document.addEventListener('DOMContentLoaded', function(){
+  var root = document.getElementById('content');
+  ReactDOM.render(Router, root);
+});
+
+window.ApiUtil = ApiUtil;
+window.UserStore = UserStore;
+
+
 // function _ensureLoggedIn(nextState, replace, asyncDoneCallback) {
 //
 //   if (UserStore.currentUserHasBeenFetched()) {
@@ -54,20 +74,3 @@ function _attemptLogin(nextState, replace, asyncDoneCallback) {
 //     asyncDoneCallback();
 //   }
 // }
-
-
-var Router = (
-  <Router history={hashHistory}>
-    <Route path="/" component={App} onEnter={_attemptLogin}>
-      <Route path="/login" component={LoginForm}></Route>
-    </Route>
-  </Router>
-);
-
-document.addEventListener('DOMContentLoaded', function(){
-  var root = document.getElementById('content');
-  ReactDOM.render(Router, root);
-});
-
-window.ApiUtil = ApiUtil;
-window.UserStore = UserStore;
