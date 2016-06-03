@@ -39,6 +39,7 @@ module.exports={
 		});
 	},
   submitLyric: function(data, callback){
+    debugger
     $.ajax({
       url: '/api/lyric',
       method: 'POST',
@@ -47,7 +48,8 @@ module.exports={
           title: data.title,
           album: data.album,
           artist: data.artist,
-          lyric_body: data.lyricBody
+          lyric_body: data.lyricBody,
+          image_url: data.albumArtUrl
         }
       },
       success: callback,

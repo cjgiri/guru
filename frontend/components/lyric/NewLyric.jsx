@@ -1,5 +1,5 @@
 var React = require("react"),
-    ApiUtil = require("../../util/apiUtil");
+    ClientLyricActions = require("../../actions/client_lyric_actions");
 
 var ReactRouter = require('react-router'),
     hashHistory = ReactRouter.hashHistory;
@@ -27,10 +27,9 @@ var NewLyric = React.createClass({
     this.setState({lyricBody: e.target.value})
   },
   submitLyric: function(){
-    ApiUtil.submitLyric(this.state, function(){
-      debugger
-      hashHistory.push("/");
-      // id is arguments[0].id
+    ClientLyricActions.submitLyric(this.state, function(){
+      var newUrl = "/lyrics/" + arguments[0].id.toString();
+      hashHistory.push(newUrl);
     }.bind(this));
   },
   render:function(){

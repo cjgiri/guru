@@ -266,6 +266,11 @@ textarea{
   width: 100%;
   background: black;
   height: 290px;
+  overflow: hidden;
+  position: relative;
+}
+.lyrics-banner img{
+  position: absolute;
 }
 .lyrics-banner-detail{
   position: relative;
@@ -273,6 +278,7 @@ textarea{
   width: 950px;
   height: 100%;
   box-sizing: border-box;
+  margin-bottom: 50px;
 }
 .lyrics-banner-detail-inset{
   color: white;
@@ -299,7 +305,7 @@ textarea{
   font-size: 18px;
   width: 950px;
   white-space: pre-wrap;
-  margin: 40px auto;
+  margin: 0 auto 50px auto;;
   font-weight: lighter;
   line-height: 1.5em;
 }

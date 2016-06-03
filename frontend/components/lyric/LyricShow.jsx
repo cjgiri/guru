@@ -26,6 +26,7 @@ var LyricShow=React.createClass({
     return(
       <div>
         <div className="lyrics-banner">
+          <img src={this.state.lyric.image_url}/>
           <div className="lyrics-banner-detail">
             <div className="lyrics-banner-detail-inset">
               <h1>{this.state.lyric.title}</h1>
@@ -34,7 +35,7 @@ var LyricShow=React.createClass({
             </div>
           </div>
         </div>
-        <div className="lyrics-content">{this.state.lyric.lyricBody}></div>
+        <div className="lyrics-content">{this.state.lyric.lyricBody}</div>
       </div>
     )
   }

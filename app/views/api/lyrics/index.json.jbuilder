@@ -4,4 +4,5 @@ json.array!(@lyrics) do |lyric|
   json.artist lyric.artist
   json.album lyric.album
   json.lyricBody lyric.lyric_body
+  json.image_url asset_path(lyric.image.url)
 end

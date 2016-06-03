@@ -10,10 +10,14 @@
 #  lyric_body :text             not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  image_url  :string
 #
 
 class Lyric < ActiveRecord::Base
   validates :title, :artist, :album, :author_id, :lyric_body, presence: true
+
+  has_attached_file :image, default_url: "record.jpg"
+  validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
 
   belongs_to :author, class_name:"User", foreign_key:'author_id'
 

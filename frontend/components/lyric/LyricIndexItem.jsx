@@ -11,6 +11,7 @@ var LyricsIndexItem = React.createClass({
     return(
       <li onClick={this.showDetail} className="lyric-index-list-item">
         <div className="lyric-text-container">
+          <img src={this.props.lyric.image_url}/>
           <div className="lyric-index-list-item-text">
             <h1>{this.props.lyric.title}</h1>
             <br/>

@@ -1,21 +1,20 @@
 # == Schema Information
 #
-# Table name: lyrics
+# Table name: annotations
 #
 #  id         :integer          not null, primary key
+#  body       :text             not null
 #  author_id  :integer          not null
-#  title      :string           not null
-#  artist     :string           not null
-#  album      :string
-#  lyric_body :text             not null
+#  start_char :integer          not null
+#  end_char   :integer          not null
+#  lyric_id   :integer          not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
-#  image_url  :string
 #
 
 require 'test_helper'
 
-class LyricTest < ActiveSupport::TestCase
+class AnnotationTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end
