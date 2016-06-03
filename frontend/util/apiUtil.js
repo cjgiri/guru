@@ -39,7 +39,6 @@ module.exports={
 		});
 	},
   submitLyric: function(data, callback){
-    debugger
     $.ajax({
       url: '/api/lyric',
       method: 'POST',

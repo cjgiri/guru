@@ -2,13 +2,14 @@ class Api::LyricController < ApplicationController
 
   def create
 
-
+    
 
 		@lyric = current_user.lyrics.new(lyric_params)
     if params[:lyric][:image_url] != ""
       @lyric.image = open(params[:lyric][:image_url])
     end
 		if @lyric.save
+      
 			render json: @lyric
 		else
 			@errors = @lyric.errors.full_messages

@@ -19,7 +19,7 @@ var NewLyric = React.createClass({
   },
   setTitle: function(e){
     this.setState({title: e.target.value})
-  },
+  }, 
   setAlbum: function(e){
     this.setState({album: e.target.value})
   },

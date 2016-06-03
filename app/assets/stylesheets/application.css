@@ -268,9 +268,18 @@ textarea{
   height: 290px;
   overflow: hidden;
   position: relative;
+  margin-bottom: 50px;
+
 }
 .lyrics-banner img{
   position: absolute;
+  top: -180%
+}
+.lyrics-banner:after{
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, .6);
 }
 .lyrics-banner-detail{
   position: relative;
@@ -278,7 +287,6 @@ textarea{
   width: 950px;
   height: 100%;
   box-sizing: border-box;
-  margin-bottom: 50px;
 }
 .lyrics-banner-detail-inset{
   color: white;

@@ -9,8 +9,7 @@ module.exports={
       url: url,
       method: 'GET',
       success: function(value){
-        debugger
-        if ( value.album.image && value.album.image.length >= 2){
+        if ( value.album && value.album.image && value.album.image.length >= 2){
           data.albumArtUrl = value.album.image[value.album.image.length-2]['#text'];
         } else {
           data.albumArtUrl = "";
@@ -18,6 +17,7 @@ module.exports={
         callback(data)
       },
       error: function(image){
+        console.log("couldnt get image");
         data.albumArtUrl = "";
         callback(data)
       },

@@ -15,6 +15,6 @@ module.exports = {
     })
   },
   handleError:function(e){
-    debugger
+    console.log(e);
   }
 };
