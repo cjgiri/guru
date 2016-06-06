@@ -16,11 +16,18 @@ var LyricShow = React.createClass({
   getInitialState: function(){
     return ({ lyric: LyricStore.find(parseInt(this.props.routeParams.lyricId)),
             displayAnnotationForm: false,
-            annotationPos: 0
+            annotationPos: 0,
+            selectIndices:[]
            });
   },
+  // todo : dry this code up
   getStateFromStore: function(){
-    this.setState( { lyric: LyricStore.find(parseInt(this.props.routeParams.lyricId)) });
+    this.setState( {
+      lyric: LyricStore.find(parseInt(this.props.routeParams.lyricId)),
+      displayAnnotationForm: false,
+      annotationPos: 0,
+      selectIndices: []
+     });
   },
   textSelected: function(e){
     var selection = window.getSelection();
@@ -28,16 +35,26 @@ var LyricShow = React.createClass({
       (Math.abs(selection.anchorOffset - selection.focusOffset) > 1) &&
       selection.anchorNode.parentNode.className === "lyrics-content" &&
       selection.focusNode.parentNode.className === "lyrics-content" ){
-        this.setState( {displayAnnotationForm: true, annotationPos: e.pageY} );
+        var selectIndices = [selection.anchorOffset, selection.focusOffset];
+        if (selection.anchorOffset > selection.focusOffset){
+          selectIndices = [selection.focusOffset, selection.anchorOffset];
+        }
+        this.setState( {
+          displayAnnotationForm: true,
+          annotationPos: e.pageY,
+          selectIndices: selectIndices
+        } );
     }
     else if (this.state.displayAnnotationForm === true){
       this.setState({displayAnnotationForm: false});
     }
   },
   render: function(){
+  debugger
   this.AnnotationForm = "";
   if (this.state.displayAnnotationForm){
-    this.AnnotationForm = <AnnotationForm pos={this.state.annotationPos}/>
+    this.AnnotationForm = <AnnotationForm pos={this.state.annotationPos}
+      indices={this.state.selectIndices} lyricId={this.props.routeParams.lyricId}/>
   }
   if(!this.state.lyric){
     return(<div>{this.props.routeParams.lyricId} </div>);

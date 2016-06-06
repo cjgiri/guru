@@ -1,14 +1,24 @@
-var React = require("react");
+var React = require("react"),
+    ApiUtil = require("../util/apiUtil");
 
 var AnnotationForm = React.createClass({
   getInitialState: function(){
-    return ({ displayAnnotationForm: false });
+    return ({ displayAnnotationForm: false, annotationBody:"" });
   },
   beginAnnotation: function(){
     this.setState({displayAnnotationForm: true});
   },
+  setAnnotationBody: function(e){
+    this.setState({annotationBody: e.target.value})
+  },
   submitAnnotation: function(){
-    
+
+    ApiUtil.submitAnnotation({
+      lyricId: this.props.lyricId,
+      startChar: this.props.indices[0],
+      endChar: this.props.indices[1],
+      annotationBody: this.state.annotationBody
+    })
   },
   render: function(){
     var divStyle = {
@@ -17,11 +27,11 @@ var AnnotationForm = React.createClass({
     if (this.state.displayAnnotationForm){
       return(
         <div className="annotation-area" style={divStyle}>
-          <form>
+          <form onSubmit={this.submitAnnotation}>>
             <label>
-              <textarea/>
+              <textarea onChange={this.setAnnotationBody}/>
             </label>
-            <button className="begin-annotation" onClick={this.submitAnnotation}>Submit Annotation</button>
+            <input type="submit" value="Submit Annotation"className="begin-annotation" ></input>
           </form>
         </div>
       )

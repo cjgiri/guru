@@ -70,5 +70,28 @@ module.exports={
 			success: LyricServerActions.receiveLyrics,
 			error: LyricServerActions.handleError
 		});
+  },
+  submitAnnotation: function(data){
+    debugger 
+    $.ajax({
+      url: '/api/annotation',
+      method: 'POST',
+      data: {
+        annotation:{
+          body: data.annotationBody,
+          start_char: data.startChar,
+          end_char: data.endChar,
+          lyric_id: data.lyricId
+        }
+      },
+      success: LyricServerActions.receiveLyric,
+      error: UserActions.handleError
+    })
   }
 }
+
+// body       :text             not null
+// #  author_id  :integer          not null
+// #  start_char :integer          not null
+// #  end_char   :integer          not null
+// #  lyric_id

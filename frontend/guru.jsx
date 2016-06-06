@@ -58,8 +58,8 @@ document.addEventListener('DOMContentLoaded', function(){
   ReactDOM.render(Router, root);
 });
 
-window.ApiUtil = ApiUtil;
-window.UserStore = UserStore;
+// window.ApiUtil = ApiUtil;
+// window.UserStore = UserStore;
 
 
 // function _ensureLoggedIn(nextState, replace, asyncDoneCallback) {
