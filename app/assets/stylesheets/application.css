@@ -128,7 +128,7 @@
   }
   /******************** modals *****************/
 .modal-bg{
-  z-index: 1;
+  z-index: 5;
   position: fixed;
   top: 0;
   left: 0;
@@ -165,6 +165,13 @@
   margin-top: 10px;
   border-radius: 1px;
   padding: 5px;
+}
+.modal-box-detail button{
+  position: absolute;
+  color: #ffff64;
+  font-size: 12px;
+  bottom: 60px;
+  right:50px;
 }
 .modal-box-detail input:focus{
   border: solid 1px #BBB;

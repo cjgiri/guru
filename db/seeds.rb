@@ -7,7 +7,8 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 User.destroy_all
 Lyric.destroy_all
-User.create!(username: "chrisG", password:"password", email:"mynewemail");
+User.create!(username: "chrisG", password:"password", email:"chris@email.com");
+User.create!(username: "guest", password:"password", email:"guest@gmail.com");
 Lyric.create!(
   author_id: 1,
   title: "No Problem",

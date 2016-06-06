@@ -40,6 +40,15 @@ var LoginForm = React.createClass({
     this.props.toggleLoginModal()
     ApiUtil.loginUser(credentials);
   },
+  loginGuest: function(e){
+    e.preventDefault();
+    var credentials={
+      password: "password",
+      username: "guest"
+    };
+    this.props.toggleLoginModal()
+    ApiUtil.loginUser(credentials);
+  },
   outerClick:function(e){
     classes = e.target.classList;
     for (var i = 0; i < classes.length; i++) {
@@ -71,6 +80,7 @@ var LoginForm = React.createClass({
                 </label>
                 <br/>
                 <input type="submit" value="Login"></input>
+                <button onClick={this.loginGuest}>Login as Guest</button>
               </form>
             </div>
           </div>
