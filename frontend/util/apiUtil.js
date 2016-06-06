@@ -72,7 +72,7 @@ module.exports={
 		});
   },
   submitAnnotation: function(data){
-    debugger 
+
     $.ajax({
       url: '/api/annotation',
       method: 'POST',
