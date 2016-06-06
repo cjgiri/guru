@@ -50,7 +50,7 @@ var LyricShow = React.createClass({
     }
   },
   render: function(){
-  debugger
+  
   this.AnnotationForm = "";
   if (this.state.displayAnnotationForm){
     this.AnnotationForm = <AnnotationForm pos={this.state.annotationPos}
