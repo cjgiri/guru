@@ -1,4 +1,4 @@
-# == Schema Information
+# == Schema Information\
 #
 # Table name: annotations
 #
@@ -13,4 +13,5 @@
 #
 
 class Annotation < ActiveRecord::Base
+  belongs_to :lyric
 end
