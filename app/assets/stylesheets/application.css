@@ -387,7 +387,7 @@ textarea{
 /******************** AnnotationForm *****************/
 .annotation-area{
   position: absolute;
-  right: 150px;
+  right: 165px;
   border-left: 5px solid #99a7ee;
   padding-left: 16px;
 }
@@ -414,9 +414,9 @@ textarea{
 }
 .annotation-area h1{
   text-transform: uppercase;
-  letter-spacing: .15em;
+  letter-spacing: .13em;
   font-weight: bold;
-  font-size: 12;
+  font-size: 11;
   padding-bottom: 10px;
 }
 .begin-annotation:hover{

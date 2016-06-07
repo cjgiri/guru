@@ -36,14 +36,12 @@ var LyricShow = React.createClass({
       selection.anchorNode.parentNode.className === "lyric-text" &&
       selection.focusNode.parentNode.className === "lyric-text"){
         var startOffset = parseInt(selection.anchorNode.parentNode.dataset.startIndex);
-        debugger
         var aOffset= selection.anchorOffset + startOffset;
         var fOffset= selection.focusOffset + startOffset;
         var selectIndices = [aOffset, fOffset];
         if (aOffset > fOffset){
           selectIndices = [fOffset, aOffset];
         }
-        debugger
 
         this.setState( {
           displayAnnotationForm: true,
@@ -59,13 +57,15 @@ var LyricShow = React.createClass({
   },
   toggleAnnotationDetail: function(e){
     e.preventDefault();
+    debugger
     if (e.target.dataset.annotationId === "none"){
-      return false
+      this.setState({displayAnnotationDetail: false});
     }else{
       this.setState({
         annotationPos: e.pageY,
         displayAnnotationDetail: e.target.dataset.annotationId,
-        displayAnnotationForm: false});
+        displayAnnotationForm: false
+      });
     }
   },
   annotateBody: function(){
@@ -161,8 +161,9 @@ var LyricShow = React.createClass({
               </div>
             </div>
           </div>
-          <div className="lyrics-content" onMouseUp={this.textSelected}
-            >{this.annotationSpans}</div>
+          <div className="lyrics-content" onMouseUp={this.textSelected}>
+            {this.annotationSpans}
+          </div>
           {this.AnnotationForm}
           {this.AnnotationDetail}
         </div>
