@@ -57,15 +57,17 @@ var LyricShow = React.createClass({
   },
   toggleAnnotationDetail: function(e){
     e.preventDefault();
-    debugger
-    if (e.target.dataset.annotationId === "none"){
+    if (e.target.dataset.annotationId &&
+        e.target.dataset.annotationId !== "none"&&
+        e.target.dataset.annotationId !== this.state.displayAnnotationDetail){
+        this.setState({
+          annotationPos: e.pageY,
+          displayAnnotationDetail: e.target.dataset.annotationId,
+          displayAnnotationForm: false
+        });
+      }
+    else{
       this.setState({displayAnnotationDetail: false});
-    }else{
-      this.setState({
-        annotationPos: e.pageY,
-        displayAnnotationDetail: e.target.dataset.annotationId,
-        displayAnnotationForm: false
-      });
     }
   },
   annotateBody: function(){
@@ -119,8 +121,7 @@ var LyricShow = React.createClass({
     return annotationObjects.map(function(object, index){
       return(
         <span key={index} className={object.className}
-        data-annotation-id={object.annotationId} data-start-index={object.startIndex}
-         onClick={this.toggleAnnotationDetail}>
+        data-annotation-id={object.annotationId} data-start-index={object.startIndex}>
           {object.text}
         </span>
       )
@@ -149,7 +150,7 @@ var LyricShow = React.createClass({
     }else{
       this.annotationSpans = this.annotateBody();
       return(
-        <div>
+        <div onClick={this.toggleAnnotationDetail}>
           <div className="lyrics-banner">
             <img src={this.state.lyric.image_url}/>
             <div className="lyrics-banner-overlay"></div>
