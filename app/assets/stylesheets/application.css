@@ -49,10 +49,6 @@
  input[type="submit"],
  textarea,
  button {
-   /*
-   Get rid of native styling. Read more here:
-   http://css-tricks.com/almanac/properties/a/appearance/
-   */
    -webkit-appearance: none;
    -moz-appearance: none;
  }
@@ -375,7 +371,14 @@ textarea{
   white-space: pre-wrap;
   margin: 0 auto 50px auto;;
   font-weight: lighter;
-  line-height: 1.5em;
+  line-height: 1.6em;
+}
+.annotation-highlight{
+  background: #eee;
+  cursor: pointer;
+}
+.annotation-highlight:hover{
+  background: #ffff64;
 }
 /******************** AnnotationForm *****************/
 .annotation-area{

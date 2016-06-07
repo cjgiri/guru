@@ -5,7 +5,6 @@ var React = require("react"),
 var ReactRouter = require('react-router'),
     hashHistory = ReactRouter.hashHistory;
 
-
 var SignupForm = React.createClass({
   getInitialState:function(){
     return({
