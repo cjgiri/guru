@@ -30,7 +30,7 @@ var LyricShow = React.createClass({
   },
   textSelected: function(e){
     var selection = window.getSelection();
-
+    debugger
     if(selection.anchorOffset !== selection.focusOffset &&
       (Math.abs(selection.anchorOffset - selection.focusOffset) > 1) &&
       selection.anchorNode.parentNode.className === "lyric-text" &&
@@ -56,15 +56,17 @@ var LyricShow = React.createClass({
 
   },
   toggleAnnotationDetail: function(e){
+    debugger
     e.preventDefault();
-    if (e.target.dataset.annotationId &&
-        e.target.dataset.annotationId !== "none"&&
-        e.target.dataset.annotationId !== this.state.displayAnnotationDetail){
+    if (e.target.dataset.annotationId && e.target.dataset.annotationId !== "none")
+        if (e.target.dataset.annotationId !== this.state.displayAnnotationDetail){
         this.setState({
           annotationPos: e.pageY,
           displayAnnotationDetail: e.target.dataset.annotationId,
           displayAnnotationForm: false
         });
+      }else{
+        return false
       }
     else{
       this.setState({displayAnnotationDetail: false});

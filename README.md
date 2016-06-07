@@ -14,8 +14,8 @@ Guru is a lyric annotation app inspired by Genius and built on Ruby on Rails and
 - [ ] Smooth, bug-free navigation
 - [ ] Adequate seed data to demonstrate the site's features
 - [ ] Core lyric upload and annotation functionality to match Genius
-- [ ] Hosting on Heroku
-- [ ] Beautiful CSS
+- [x] Hosting on Heroku
+- [x] Beautiful CSS
 - [ ] A production README, replacing this README
 
 ## Product Goals and Priorities
@@ -51,37 +51,37 @@ progress. Put an x between the brackets for a checkmark: [x] -->
 
 **Objective:** Functioning rails project with Authentication
 
-- [ ] create new project
-- [ ] create `User` model
+- [x] create new project
+- [x] create `User` model
 - [ ] authentication
-- [ ] user signup/signin pages
-- [ ] blank landing page after signin
+- [x] user signup/signin pages
+- [x] blank landing page after signin
 
 ### Phase 2: Lyrics Model, API, and basic APIUtil (1 days)
 
 **Objective:** Lyrics can be created, read, edited and destroyed through
 the API.
 
-- [ ] create `Lyric` model
-- [ ] seed the database with a small amount of test data
+- [x] create `Lyric` model
+- [x] seed the database with a small amount of test data
 - [ ] CRUD API for lyrics (`LyricsController`)
-- [ ] jBuilder views for lyrics
-- [ ] setup Webpack & Flux scaffold
-- [ ] setup `APIUtil` to interact with the API
-- [ ] test out API interaction in the console.
+- [x] jBuilder views for lyrics
+- [x] setup Webpack & Flux scaffold
+- [x] setup `APIUtil` to interact with the API
+- [x] test out API interaction in the console.
 
 ### Phase 3: Flux Architecture and Router (1 days)
 
 **Objective:** Lyrics can be created, read, edited and destroyed with the
 user interface.
 
-- [ ] setup the flux loop with skeleton files
-- [ ] setup React Router
+- [x] setup the flux loop with skeleton files
+- [x] setup React Router
 - implement each lyric component, building out the flux loop as needed.
-  - [ ] `LyricsIndex`
-  - [ ] `LyricIndexItem`
-  - [ ] `LyricForm`
-- [ ] save Lyrics to the DB when the form loses focus or is left idle
+  - [x] `LyricsIndex`
+  - [x] `LyricIndexItem`
+  - [x] `LyricForm`
+- [x] save Lyrics to the DB when the form loses focus or is left idle
   after editing.
 
 ### Phase 4: Start Styling (0.5 days)
@@ -89,18 +89,18 @@ user interface.
 **Objective:** Existing pages (including singup/signin) will look good.
 
 - [ ] create a basic style guide
-- [ ] position elements on the page
-- [ ] add basic colors & styles
+- [x] position elements on the page
+- [x] add basic colors & styles
 
 ### Phase 5: Annotations (2.5 days)
 
 **Objective:** Annotations can be made on and viewed by lyric.
 
-- [ ] create `Annotation` model
+- [x] create `Annotation` model
 - build out API, Flux loop, and components for:
   - [ ] Annotation CRUD
-  - [ ] annotations can only be added to lyrics, cannot override existing annotations
-  - [ ] annotation selection is done directly from in-lyric links
+  - [x] annotations can only be added to lyrics, cannot override existing annotations
+  - [x] annotation selection is done directly from in-lyric links
 - Use CSS to style new views
 
 

@@ -71,7 +71,7 @@
     width: 100%;
     position: relative;
     text-align: center;
-    
+
   }
   .navBar-logo{
     letter-spacing: .5em;
@@ -332,7 +332,7 @@ textarea{
 }
 .lyrics-banner img{
   position: absolute;
-  top: -180%
+  top: -170%
 }
 .lyrics-banner-overlay{
     position: absolute;
