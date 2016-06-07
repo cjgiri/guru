@@ -9,7 +9,7 @@ module.exports = {
     })
   },
   handleError:function(e){
-    console.log(e);
+    // console.log(e);
   },
   removeCurrentUser:function(){
     Dispatcher.dispatch({
