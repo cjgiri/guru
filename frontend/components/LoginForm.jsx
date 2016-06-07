@@ -64,6 +64,7 @@ var LoginForm = React.createClass({
           <div className="modal-box">
           <h1>SIGN IN</h1>
             <div className="modal-box-detail">
+              <button className="twitter-auth">Sign in with Twitter</button>
               <form onSubmit={this.loginUser}>
                 <label>
                 Username or Email
@@ -80,7 +81,7 @@ var LoginForm = React.createClass({
                 </label>
                 <br/>
                 <input type="submit" value="Login"></input>
-                <button onClick={this.loginGuest}>Login as Guest</button>
+                <a onClick={this.loginGuest}>Login as Guest</a>
               </form>
             </div>
           </div>

@@ -127,13 +127,13 @@
     position: absolute;
     top: 42px;
     right: -90px;
-    transition: right .5s ease;
+    transition: right .3s ease;
     background: #ffff64;
   }
   .nav-user-actions:hover .user-actions-dropdown{
     z-index: 4;
     right: 0px;
-    transition: right .5s ease;
+    transition: right .3s ease;
 
   }
   .nav-user-actions a{
@@ -199,7 +199,7 @@
   border-radius: 1px;
   padding: 5px;
 }
-.modal-box-detail button{
+.modal-box-detail a{
   position: absolute;
   color: #ffff64;
   font-size: 12px;
@@ -214,6 +214,16 @@
 }
 .modal-box-detail input[type="submit"]:hover {
   border: solid 1px #BBB;
+}
+.twitter-auth{
+  background: #55acee;
+  width: 100%;
+  text-align: center;
+  padding: 10px 0;
+  margin-bottom: 10px;
+}
+.twitter-auth:hover{
+  background: #6cb7f0;
 }
 /******************** LyricForm *****************/
 

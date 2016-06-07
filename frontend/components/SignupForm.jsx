@@ -45,6 +45,15 @@ var SignupForm = React.createClass({
       }
     }
   },
+  loginGuest: function(e){
+    e.preventDefault();
+    var credentials={
+      password: "password",
+      username: "guest"
+    };
+    this.props.toggleSignUpModal()
+    ApiUtil.loginUser(credentials);
+  },
   render:function(){
     if (this.props.modal === "signup"){
       return(
@@ -52,6 +61,7 @@ var SignupForm = React.createClass({
           <div className="modal-box">
           <h1>SIGN UP</h1>
             <div className="modal-box-detail">
+              <button className="twitter-auth">Sign up with Twitter</button>
               <form onSubmit={this.loginUser}>
                 <label>
                 Username
@@ -75,6 +85,7 @@ var SignupForm = React.createClass({
                 </label>
                 <br/>
                 <input type="submit" value="Sign Up"></input>
+                <a onClick={this.loginGuest}>Login as Guest</a>
               </form>
             </div>
           </div>
