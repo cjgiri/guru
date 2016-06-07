@@ -70,7 +70,8 @@
     background-color: #ffff64;
     width: 100%;
     position: relative;
-    text-align: center;
+    text-align: center
+    overflow: hidden;
   }
   .navBar-logo{
     letter-spacing: .5em;
@@ -98,13 +99,6 @@
     box-shadow: 0 0 5px #e9e9e9 inset;
     border: solid 1px #ccc;
   }
-  .nav-user-actions{
-    display: block;
-    float: right;
-    padding: 12px;
-    height: 18px;
-    cursor: pointer;
-  }
   .nav-user-actions-logged-out{
     display: block;
     float: right;
@@ -117,19 +111,29 @@
     padding: 0px 12px;
     float: left;
   }
+  .nav-user-actions{
+    display: block;
+    float: right;
+    padding: 12px;
+    height: 18px;
+    cursor: pointer;
+    overflow: hidden;
+  }
+  /*some code from trying to add animation*/
   .user-actions-dropdown{
     display: none;
-    display: block;
     position: absolute;
     top: 42px;
-    right: -90px;
-    transition: right .3s ease;
+    right: -95px;
+    transition: .3s ease;
     background: #ffff64;
+    z-index: 4;
   }
   .nav-user-actions:hover .user-actions-dropdown{
-    z-index: 4;
+    display: block;
     right: 0px;
-    transition: right .3s ease;
+    transition: .3s ease;
+    display: block;
 
   }
   .nav-user-actions a{
@@ -407,6 +411,13 @@ textarea{
   display: block;
   float: left;
   transition: background .3s ease;
+}
+.annotation-area h1{
+  text-transform: uppercase;
+  letter-spacing: .15em;
+  font-weight: bold;
+  font-size: 12;
+  padding-bottom: 10px;
 }
 .begin-annotation:hover{
   background: #eee;

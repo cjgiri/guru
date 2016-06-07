@@ -12,13 +12,16 @@ var AnnotationForm = React.createClass({
     this.setState({annotationBody: e.target.value})
   },
   submitAnnotation: function(){
-
     ApiUtil.submitAnnotation({
       lyricId: this.props.lyricId,
       startChar: this.props.indices[0],
       endChar: this.props.indices[1],
       annotationBody: this.state.annotationBody
     })
+  },
+  toggleForm: function(e){
+    e.preventDefault();
+    this.setState({displayAnnotationForm: false});
   },
   render: function(){
     var divStyle = {
@@ -32,7 +35,7 @@ var AnnotationForm = React.createClass({
               <textarea onChange={this.setAnnotationBody}/>
             </label>
             <input type="submit" value="Submit Annotation"className="begin-annotation" />
-            <button className="cancel-annotation">Cancel</button>
+            <button className="cancel-annotation" onClick={this.toggleForm}>Cancel</button>
           </form>
         </div>
       )

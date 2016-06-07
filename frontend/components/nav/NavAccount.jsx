@@ -37,7 +37,7 @@ var NavAccount = React.createClass({
     if(this.state.user.username){
 
       return(
-        <div className="nav-user-actions">
+        <div className="nav-user-actions group">
           <strong>Hello, {this.state.user.username}!</strong>
           <div className="user-actions-dropdown">
             <a onClick={this.signOut}>Sign Out</a>

@@ -15,4 +15,16 @@
 class Annotation < ActiveRecord::Base
   belongs_to :lyric
   belongs_to :author,  class_name:"User", foreign_key:'author_id'
+
+  validates :body, presence: :true
+  validate :does_not_overlap
+
+
+  def does_not_overlap
+    # refactor this horrible line
+    if Annotation.where('lyric_id = ?', lyric_id).where.not('(start_char > ? AND end_char > ?) OR (start_char < ? AND end_char < ?)',end_char, end_char, start_char, start_char).any?
+      errors.add(:indices, "cannot overlap")
+    end
+  end
+
 end

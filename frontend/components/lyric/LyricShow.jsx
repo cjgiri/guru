@@ -3,7 +3,8 @@ var React = require("react"),
     hashHistory = ReactRouter.hashHistory,
     LyricStore = require('../../stores/lyric_store'),
     ApiUtil = require('../../util/apiUtil'),
-    AnnotationForm = require('../AnnotationForm');
+    AnnotationForm = require('../AnnotationForm'),
+    AnnotationDetail = require('./AnnotationDetail');
 
 var LyricShow = React.createClass({
   componentDidMount: function(){
@@ -16,31 +17,37 @@ var LyricShow = React.createClass({
   getInitialState: function(){
     return this.stateHelper();
   },
-  // todo : dry this code up
   getStateFromStore: function(){
     this.setState( this.stateHelper() );
   },
   stateHelper: function(){
     return ({ lyric: LyricStore.find(parseInt(this.props.routeParams.lyricId)),
             displayAnnotationForm: false,
+            displayAnnotationDetail: false,
             annotationPos: 0,
             selectIndices:[]
            });
   },
   textSelected: function(e){
-    debugger
     var selection = window.getSelection();
+
     if(selection.anchorOffset !== selection.focusOffset &&
       (Math.abs(selection.anchorOffset - selection.focusOffset) > 1) &&
-      selection.anchorNode.parentNode.parentNode.className === "lyrics-content" &&
-      selection.focusNode.parentNode.parentNode.className === "lyrics-content" ){
-        var selectIndices = [selection.anchorOffset, selection.focusOffset];
-        if (selection.anchorOffset > selection.focusOffset){
-          selectIndices = [selection.focusOffset, selection.anchorOffset];
+      selection.anchorNode.parentNode.className === "lyric-text" &&
+      selection.focusNode.parentNode.className === "lyric-text"){
+        var startOffset = parseInt(selection.anchorNode.parentNode.dataset.startIndex);
+        debugger
+        var aOffset= selection.anchorOffset + startOffset;
+        var fOffset= selection.focusOffset + startOffset;
+        var selectIndices = [aOffset, fOffset];
+        if (aOffset > fOffset){
+          selectIndices = [fOffset, aOffset];
         }
-        //fix selectIndices here
+        debugger
+
         this.setState( {
           displayAnnotationForm: true,
+          displayAnnotationDetail: false,
           annotationPos: e.pageY,
           selectIndices: selectIndices
         } );
@@ -48,19 +55,30 @@ var LyricShow = React.createClass({
     else if (this.state.displayAnnotationForm === true){
       this.setState({displayAnnotationForm: false});
     }
+
   },
   toggleAnnotationDetail: function(e){
     e.preventDefault();
     if (e.target.dataset.annotationId === "none"){
       return false
     }else{
-
+      this.setState({
+        annotationPos: e.pageY,
+        displayAnnotationDetail: e.target.dataset.annotationId,
+        displayAnnotationForm: false});
     }
   },
   annotateBody: function(){
     var annotationObjects = [];
     var lastEndChar = 0;
     var annotationAr = this.state.lyric.annotations.slice();
+    var lyricBody = this.state.lyric.lyricBody;
+
+    if (annotationAr.length === 0){
+      return(<span className="lyric-text" data-annotation-id="none" data-start-index="0">
+      {this.state.lyric.lyricBody}
+    </span>)
+    }
 
     annotationAr.sort(function(a,b){
       if (a.start_char < b.start_char) return -1;
@@ -71,33 +89,38 @@ var LyricShow = React.createClass({
     for (var i = 0; i < annotationAr.length; i++) {
       var currentStart = annotationAr[i].start_char;
       var currentEnd = annotationAr[i].end_char;
-      var lyricBody = this.state.lyric.lyricBody;
+
 
       if (currentStart > lastEndChar){
         annotationObjects.push({
           text: lyricBody.substring(lastEndChar, currentStart),
-          endIndex: currentStart,
+          startIndex: lastEndChar,
           annotationId: "none",
           className: "lyric-text"
         });
-        lastEndChar = currentEnd;
       }
       annotationObjects.push({
         text: lyricBody.substring(currentStart, currentEnd),
-        endIndex: currentEnd,
+        startIndex: currentStart,
         annotationId: annotationAr[i].id,
         className: "annotation-highlight"
       });
+      lastEndChar = currentEnd;
     }
-
-    if (annotationAr.length === 0){
-      return(<span className="lyric-text" data-annotation-id="none">{this.state.lyric.lyricBody}</span>)
+    if (lastEndChar < lyricBody.length){
+      annotationObjects.push({
+        text: lyricBody.substring(lastEndChar, lyricBody.length),
+        startIndex: lastEndChar,
+        annotationId: "none",
+        className: "lyric-text"
+      });
     }
 
     return annotationObjects.map(function(object, index){
       return(
         <span key={index} className={object.className}
-        data-annotation-id={object.annotationId} onClick={this.toggleAnnotationDetail}>
+        data-annotation-id={object.annotationId} data-start-index={object.startIndex}
+         onClick={this.toggleAnnotationDetail}>
           {object.text}
         </span>
       )
@@ -105,33 +128,46 @@ var LyricShow = React.createClass({
   },
   render: function(){
 
-  this.AnnotationForm = "";
-  if (this.state.displayAnnotationForm){
-    this.AnnotationForm = <AnnotationForm pos={this.state.annotationPos}
-      indices={this.state.selectIndices} lyricId={this.props.routeParams.lyricId}/>
-  }
-  if(!this.state.lyric){
-    return(<div>{this.props.routeParams.lyricId} </div>);
-  }else{
-    this.annotationObjects = this.annotateBody();
-    return(
-      <div>
-        <div className="lyrics-banner">
-          <img src={this.state.lyric.image_url}/>
-          <div className="lyrics-banner-overlay"></div>
-          <div className="lyrics-banner-detail">
-            <div className="lyrics-banner-detail-inset">
-              <h1>{this.state.lyric.title}</h1>
-              <h2>{this.state.lyric.artist}</h2>
-              <h3>{this.state.lyric.album}</h3>
+    this.AnnotationForm = null;
+    this.AnnotationDetail = null;
+
+    if (this.state.displayAnnotationForm){
+      this.AnnotationForm = <AnnotationForm pos={this.state.annotationPos}
+        indices={this.state.selectIndices} lyricId={this.props.routeParams.lyricId}/>
+    }
+    if (this.state.displayAnnotationDetail){
+
+      var annotationId = this.state.displayAnnotationDetail;
+      var annotation = this.state.lyric.annotations.find(function(el){
+        return (el.id.toString() === annotationId)
+      });
+      this.AnnotationDetail = <AnnotationDetail pos={this.state.annotationPos}
+        annotation={annotation} />
+    }
+    if(!this.state.lyric){
+      return(<div>{this.props.routeParams.lyricId} </div>);
+    }else{
+      this.annotationSpans = this.annotateBody();
+      return(
+        <div>
+          <div className="lyrics-banner">
+            <img src={this.state.lyric.image_url}/>
+            <div className="lyrics-banner-overlay"></div>
+            <div className="lyrics-banner-detail">
+              <div className="lyrics-banner-detail-inset">
+                <h1>{this.state.lyric.title}</h1>
+                <h2>{this.state.lyric.artist}</h2>
+                <h3>{this.state.lyric.album}</h3>
+              </div>
             </div>
           </div>
+          <div className="lyrics-content" onMouseUp={this.textSelected}
+            >{this.annotationSpans}</div>
+          {this.AnnotationForm}
+          {this.AnnotationDetail}
         </div>
-        <div className="lyrics-content" onMouseUp={this.textSelected}>{this.annotationObjects}</div>
-        {this.AnnotationForm}
-      </div>
-    )
-  }
+      )
+    }
   }
 })
 
