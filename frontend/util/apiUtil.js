@@ -89,9 +89,3 @@ module.exports={
     })
   }
 }
-
-// body       :text             not null
-// #  author_id  :integer          not null
-// #  start_char :integer          not null
-// #  end_char   :integer          not null
-// #  lyric_id

@@ -38,13 +38,16 @@ var NavAccount = React.createClass({
 
       return(
         <div className="nav-user-actions">
-          <a onClick={this.signOut}>Sign Out</a>
-          <a onClick={this.addSong}>Add Song</a>
+          <strong>Hello, {this.state.user.username}!</strong>
+          <div className="user-actions-dropdown">
+            <a onClick={this.signOut}>Sign Out</a>
+            <a onClick={this.addSong}>Add Song</a>
+          </div>
         </div>
       )
     }else{
       return(
-        <div className="nav-user-actions">
+        <div className="nav-user-actions-logged-out">
           <a onClick={this.toggleSignUpModal}>Sign Up</a>
           <a onClick={this.toggleLoginModal}>Sign In</a>
           <LoginForm toggleLoginModal={this.toggleLoginModal} modal={this.state.modal}/>
