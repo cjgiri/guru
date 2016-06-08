@@ -121,6 +121,9 @@ var LyricShow = React.createClass({
     }
 
     return annotationObjects.map(function(object, index){
+      if (object.annotationId.toString() === this.state.displayAnnotationDetail){
+        object.className = object.className +" current-selected-annotation"
+      }
       return(
         <span key={index} className={object.className}
         data-annotation-id={object.annotationId} data-start-index={object.startIndex}>
@@ -129,8 +132,13 @@ var LyricShow = React.createClass({
       )
     }.bind(this));
   },
+  findAnnotation: function(id){
+      return this.state.lyric.annotations.find(function(el){
+      return (el.id.toString() === id)
+    });
+  },
   render: function(){
-
+    debugger
     this.AnnotationForm = null;
     this.AnnotationDetail = null;
 
@@ -139,14 +147,13 @@ var LyricShow = React.createClass({
         indices={this.state.selectIndices} lyricId={this.props.routeParams.lyricId}/>
     }
     if (this.state.displayAnnotationDetail){
-
       var annotationId = this.state.displayAnnotationDetail;
-      var annotation = this.state.lyric.annotations.find(function(el){
-        return (el.id.toString() === annotationId)
-      });
+
+      var annotation = this.findAnnotation(annotationId);
       this.AnnotationDetail = <AnnotationDetail pos={this.state.annotationPos}
         annotation={annotation} />
     }
+
     if(!this.state.lyric){
       return(<div>{this.props.routeParams.lyricId} </div>);
     }else{

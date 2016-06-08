@@ -19,6 +19,7 @@ var NavSearch = React.createClass({
     this.searchListener.remove();
   },
   updateSearch: function(e){
+    debugger
     e.preventDefault();
     var queryString = e.target.value;
     if (queryString === ""){
@@ -33,6 +34,10 @@ var NavSearch = React.createClass({
   },
   styleSearch: function(e){
     var newFocusedState = !this.state.focused
+    if (!newFocusedState){
+      document.getElementById('search-bar').value = '';
+      this.setState({focused: false, results: []});
+    }
     this.setState({focused: newFocusedState});
   },
   searchRedirect: function(e){
@@ -45,8 +50,6 @@ var NavSearch = React.createClass({
     var inputClass = "nav-search";
     var placeholder = "Search lyrics"
     if (this.state.focused){
-      divClass = "nav-search-holder search-holder-select";
-      inputClass = "test nav-search";
       placeholder = "";
     }
     return(
@@ -57,7 +60,7 @@ var NavSearch = React.createClass({
         <ul className="results-list">
           {this.state.results.map(function(object, index){
             return(<li key={index} data-lyric-id={object.id} onClick={this.searchRedirect}>
-              {object.title}
+              {object.artist} - {object.title}
             </li>)
           }.bind(this))}
       </ul>

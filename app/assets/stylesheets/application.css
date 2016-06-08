@@ -99,9 +99,13 @@
     background: white;
     box-shadow: 0 0 5px #e9e9e9 inset;
     border: solid 1px #ccc;
-    width: 100%;
+    width: 180px;
   }
   /*.search-holder-select{
+    z-index: 5;
+    position: absolute;
+    text-align: left;
+    padding:7px ;
     width: calc(100% - 22px);
   }*/
   .results-list{
@@ -223,6 +227,7 @@
   font-size: 12px;
   bottom: 60px;
   right:50px;
+  cursor: pointer;
 }
 .modal-box-detail input:focus{
   border: solid 1px #BBB;
@@ -240,6 +245,7 @@
   text-align: center;
   padding: 10px 0;
   margin-bottom: 10px;
+  margin-top: 8px;
 }
 .twitter-auth:hover{
   background: #6cb7f0;
@@ -401,6 +407,9 @@ textarea{
   cursor: pointer;
 }
 .annotation-highlight:hover{
+  background: #ffff64;
+}
+.current-selected-annotation{
   background: #ffff64;
 }
 /******************** AnnotationForm *****************/
