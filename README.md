@@ -25,8 +25,8 @@ Guru will allow users to do the following:
 <!-- This is a Markdown checklist. Use it to keep track of your
 progress. Put an x between the brackets for a checkmark: [x] -->
 
-- [ ] Create an account (MVP)
-- [ ] Log in / Log out, including as a Guest/Demo User (MVP)
+- [x] Create an account (MVP)
+- [x] Log in / Log out, including as a Guest/Demo User (MVP)
 - [ ] Create, read, edit, and delete lyrics (MVP)
 - [ ] Create, read, edit, and delete annotations using text highlighting for selection (MVP)
 - [ ] Allow music upload for playback on lyric show page (hopeful feature, but not MVP)

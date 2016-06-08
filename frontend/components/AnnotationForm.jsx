@@ -11,7 +11,9 @@ var AnnotationForm = React.createClass({
   setAnnotationBody: function(e){
     this.setState({annotationBody: e.target.value})
   },
-  submitAnnotation: function(){
+  submitAnnotation: function(e){
+    e.preventDefault();
+    e.stopPropagation();
     ApiUtil.submitAnnotation({
       lyricId: this.props.lyricId,
       startChar: this.props.indices[0],
@@ -30,11 +32,11 @@ var AnnotationForm = React.createClass({
     if (this.state.displayAnnotationForm){
       return(
         <div className="annotation-area" style={divStyle}>
-          <form onSubmit={this.submitAnnotation}>
+          <form >
             <label>
               <textarea onChange={this.setAnnotationBody}/>
             </label>
-            <input type="submit" value="Submit Annotation"className="begin-annotation" />
+            <input onClick={this.submitAnnotation} type="submit" value="Submit Annotation"className="begin-annotation" />
             <button className="cancel-annotation" onClick={this.toggleForm}>Cancel</button>
           </form>
         </div>

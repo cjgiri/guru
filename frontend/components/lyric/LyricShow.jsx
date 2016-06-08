@@ -30,7 +30,6 @@ var LyricShow = React.createClass({
   },
   textSelected: function(e){
     var selection = window.getSelection();
-    debugger
     if(selection.anchorOffset !== selection.focusOffset &&
       (Math.abs(selection.anchorOffset - selection.focusOffset) > 1) &&
       selection.anchorNode.parentNode.className === "lyric-text" &&
@@ -56,9 +55,10 @@ var LyricShow = React.createClass({
 
   },
   toggleAnnotationDetail: function(e){
-    debugger
     e.preventDefault();
+    // if click on a text snippet that is annotated
     if (e.target.dataset.annotationId && e.target.dataset.annotationId !== "none")
+        // if click on a text snippet that isn't the selected one
         if (e.target.dataset.annotationId !== this.state.displayAnnotationDetail){
         this.setState({
           annotationPos: e.pageY,
@@ -66,7 +66,7 @@ var LyricShow = React.createClass({
           displayAnnotationForm: false
         });
       }else{
-        return false
+        return false;
       }
     else{
       this.setState({displayAnnotationDetail: false});
