@@ -104,7 +104,7 @@
     float: right;
     padding: 12px;
   }
-  .nav-user-actions-logged-out a{
+  .logged-out-actions{
     padding-left: 7px;
     cursor: pointer;
     display: block;
@@ -199,7 +199,7 @@
   border-radius: 1px;
   padding: 5px;
 }
-.modal-box-detail a{
+.guest-button{
   position: absolute;
   color: #ffff64;
   font-size: 12px;
@@ -216,6 +216,7 @@
   border: solid 1px #BBB;
 }
 .twitter-auth{
+  display: block;
   background: #55acee;
   width: 100%;
   text-align: center;

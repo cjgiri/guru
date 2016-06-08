@@ -7,5 +7,8 @@ Rails.application.routes.draw do
     resource :annotation, only: [:create, :update, :destroy]
   end
 
+  get '/auth/:provider/callback', to: 'api/sessions#twitter_create'
+
   root "static_pages#root"
+
 end

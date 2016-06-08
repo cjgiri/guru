@@ -32,7 +32,7 @@ var AnnotationForm = React.createClass({
     if (this.state.displayAnnotationForm){
       return(
         <div className="annotation-area" style={divStyle}>
-          <form >
+          <form>
             <label>
               <textarea onChange={this.setAnnotationBody}/>
             </label>

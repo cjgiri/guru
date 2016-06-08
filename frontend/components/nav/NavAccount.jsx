@@ -48,8 +48,8 @@ var NavAccount = React.createClass({
     }else{
       return(
         <div className="nav-user-actions-logged-out">
-          <a onClick={this.toggleSignUpModal}>Sign Up</a>
-          <a onClick={this.toggleLoginModal}>Sign In</a>
+          <a className="logged-out-actions" onClick={this.toggleSignUpModal}>Sign Up</a>
+          <a className="logged-out-actions" onClick={this.toggleLoginModal}>Sign In</a>
           <LoginForm toggleLoginModal={this.toggleLoginModal} modal={this.state.modal}/>
           <SignupForm toggleSignUpModal={this.toggleSignUpModal} modal={this.state.modal}/>
         </div>
