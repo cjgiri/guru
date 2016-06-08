@@ -13,5 +13,3 @@ Rails.application.routes.draw do
   root "static_pages#root"
 
 end
-
-# get "url", to "action" can be nested in namespace, directs to /api/url

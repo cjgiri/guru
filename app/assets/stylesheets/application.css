@@ -75,9 +75,11 @@
   }
   .navBar-logo{
     letter-spacing: .5em;
-    display: block;
-    float: left;
-    margin: auto;
+    /*display: block;
+    float: right;
+    margin: auto;*/
+    position: absolute;
+    left: calc(50% - 69px);
     background-color: #ffff64;
     color: #ffff64;
     font-size: 28px;
@@ -86,10 +88,10 @@
     cursor: pointer;
   }
   .nav-search-holder{
-    width: calc(50% - 67.5px);
-    float: left;
+    z-index: 5;
+    position: absolute;
     text-align: left;
-    padding:7px;
+    padding:7px ;
   }
   .nav-search{
     text-align: left;
@@ -97,6 +99,23 @@
     background: white;
     box-shadow: 0 0 5px #e9e9e9 inset;
     border: solid 1px #ccc;
+    width: 100%;
+  }
+  /*.search-holder-select{
+    width: calc(100% - 22px);
+  }*/
+  .results-list{
+    width: 107%;
+    background: #222;
+  }
+  .results-list li{
+    padding: 7px;
+    color: white;
+    cursor: pointer;
+    border-bottom: 1px solid #555;
+  }
+  .results-list li:hover{
+    color: #ffff64;
   }
   .nav-user-actions-logged-out{
     display: block;
