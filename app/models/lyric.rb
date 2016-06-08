@@ -18,6 +18,12 @@
 #
 
 class Lyric < ActiveRecord::Base
+
+  include PgSearch
+
+  pg_search_scope :search_by_metadata, :against => [:artist, :title],
+                  using: {tsearch: {prefix: true}}
+
   validates :title, :artist, :album, :author_id, :lyric_body, presence: true
 
   has_attached_file :image, default_url: "record.jpg"

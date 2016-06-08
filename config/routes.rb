@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     resource :session, only: [:create, :destroy, :show]
     resources :lyric, only: [:create, :destroy, :show, :index]
     resource :annotation, only: [:create, :update, :destroy]
+    get "/search/:query", to: 'lyric#search'
   end
 
   get '/auth/:provider/callback', to: 'api/sessions#twitter_create'
@@ -12,3 +13,5 @@ Rails.application.routes.draw do
   root "static_pages#root"
 
 end
+
+# get "url", to "action" can be nested in namespace, directs to /api/url

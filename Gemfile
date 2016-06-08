@@ -30,6 +30,8 @@ gem 'aws-sdk', '>= 2.0'
 gem 'omniauth'
 gem 'omniauth-twitter'
 
+gem 'pg_search'
+
 # Use Unicorn as the app server
 # gem 'unicorn'
 

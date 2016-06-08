@@ -1,15 +1,12 @@
 class Api::LyricController < ApplicationController
 
   def create
-
-    
-
 		@lyric = current_user.lyrics.new(lyric_params)
     if params[:lyric][:image_url] != ""
       @lyric.image = open(params[:lyric][:image_url])
     end
 		if @lyric.save
-      
+
 			render json: @lyric
 		else
 			@errors = @lyric.errors.full_messages
@@ -34,6 +31,18 @@ class Api::LyricController < ApplicationController
 			render json: nil, status: 404
 		end
 	end
+
+  def search
+    # debugger
+    if params[:query].present?
+      # searchParam = params[:query] + "*"
+      # @lyrics = Lyric.where("title ~ ?", searchParam)
+      @lyrics = Lyric.search_by_metadata(params[:query]).limit(10);
+      render "api/lyrics/search"
+    else
+      render json: []
+    end
+  end
 
 	private
 

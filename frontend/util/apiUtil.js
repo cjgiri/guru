@@ -72,7 +72,6 @@ module.exports={
 		});
   },
   submitAnnotation: function(data){
-
     $.ajax({
       url: '/api/annotation',
       method: 'POST',
@@ -87,5 +86,13 @@ module.exports={
       success: LyricServerActions.receiveLyric,
       error: UserActions.handleError
     })
+  },
+  searchLyrics: function(query){
+    $.ajax({
+			url: '/api/search/' + query,
+			method: 'GET',
+			success: LyricServerActions.receiveSearchResults,
+			error: LyricServerActions.handleError
+		});
   }
 }
