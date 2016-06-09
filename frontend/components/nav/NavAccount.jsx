@@ -4,7 +4,8 @@ var React = require("react"),
     UserStore = require('../../stores/user_store'),
     LoginForm = require("../LoginForm"),
     SignupForm = require("../SignupForm"),
-    ApiUtil = require("../../util/apiUtil");
+    ApiUtil = require("../../util/apiUtil"),
+    ErrorActions = require('../../actions/error_actions');
 
 var NavAccount = React.createClass({
   getInitialState:function(){
@@ -20,13 +21,16 @@ var NavAccount = React.createClass({
     ApiUtil.logoutUser();
   },
   toggleLoginModal:function(){
+    // TODO refactor this and signup modal somehow
     var modalVal = this.state.modal;
     modalVal = (modalVal === "login") ? "none" : "login";
+    if(modalVal === "none") ErrorActions.clearErrors();
     this.setState({modal: modalVal});
   },
   toggleSignUpModal:function(){
     var modalVal = this.state.modal;
     modalVal = (modalVal === "signup") ? "none" : "signup";
+    if(modalVal === "none") ErrorActions.clearErrors();
     this.setState({modal: modalVal});
   },
   addSong: function(){

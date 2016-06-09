@@ -1,6 +1,7 @@
 var React = require("react"),
     ApiUtil = require("../util/apiUtil"),
-    UserStore = require("../stores/user_store");
+    UserStore = require("../stores/user_store"),
+    ErrorStore = require("../stores/error_store");
 
 var ReactRouter = require('react-router'),
     hashHistory = ReactRouter.hashHistory;
@@ -9,18 +10,20 @@ var ReactRouter = require('react-router'),
 var LoginForm = React.createClass({
   getInitialState:function(){
     return({
+      errors: [],
       name: "",
       password: ""
     });
   },
   componentDidMount: function(){
-    UserStore.addListener(this.login_success_check);
+    this.errorListener = ErrorStore.addListener(this.errorCheck);
   },
-  login_success_check:function(){
-    // debugger
-    // if (UserStore.isUserLoggedIn()) {
-    //   hashHistory.push("/");
-    // }
+  componentWillUnmount: function(){
+    this.errorListener.remove();
+  },
+  errorCheck: function(){
+    var errors = ErrorStore.formErrors("login");
+    this.setState({errors: errors});
   },
   setPass: function(e){
     this.setState({password: e.target.value})
@@ -37,8 +40,7 @@ var LoginForm = React.createClass({
       credentials.email = this.state.name;
     }
     // TODO toggle modal/ show errors on failure to login
-    this.props.toggleLoginModal()
-    ApiUtil.loginUser(credentials);
+    ApiUtil.loginUser(credentials, this.props.toggleLoginModal);
   },
   loginGuest: function(e){
     e.preventDefault();
@@ -59,10 +61,16 @@ var LoginForm = React.createClass({
   },
   render:function(){
     if (this.props.modal === "login"){
+      var errorModal = null;
+      debugger
+      if(this.state.errors.length !== 0){
+        errorModal = <div className="errors-flash"> {this.state.errors}</div>;
+        }
       return(
         <div className="modal-bg" onClick={this.outerClick}>
           <div className="modal-box">
           <h1>SIGN IN</h1>
+          {errorModal}
             <div className="modal-box-detail">
               <a href="/auth/twitter" className="twitter-auth">Sign in with Twitter</a>
               <form onSubmit={this.loginUser}>

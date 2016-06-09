@@ -1,15 +1,23 @@
 var Dispatcher = require('../dispatcher/dispatcher'),
-    UserActions = require('../actions/user_actions');
-    LyricServerActions = require('../actions/lyric_server_actions');
+    UserActions = require('../actions/user_actions'),
+    LyricServerActions = require('../actions/lyric_server_actions'),
+    ErrorActions = require('../actions/error_actions');
 
 module.exports={
-  loginUser: function(credentials){
+  loginUser: function(credentials, callback){
     $.ajax({
       url: "api/session",
       type: "POST",
       data: {user: credentials},
-      success: UserActions.receiveCurrentUser,
-      error: UserActions.handleError
+      success: function(user){
+        UserActions.receiveCurrentUser(user);
+        ErrorActions.clearErrors();
+        callback();
+      },
+      error: function(xhr){
+        var errors = xhr.responseJSON;
+	      ErrorActions.setErrors("login", errors);
+      }
     })
   },
   logoutUser: function(){
@@ -25,8 +33,15 @@ module.exports={
       url: "api/user",
       type: "POST",
       data: {user: user},
-      success: UserActions.receiveCurrentUser,
-      error: UserActions.handleError
+      success: function(user){
+        UserActions.receiveCurrentUser(user);
+        ErrorActions.clearErrors();
+        callback();
+      },
+      error: function(xhr){
+        var errors = xhr.responseJSON;
+	      ErrorActions.setErrors("login", errors);
+      }
     })
   },
   fetchCurrentUser: function(complete){

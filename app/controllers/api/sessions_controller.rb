@@ -3,13 +3,12 @@ class Api::SessionsController < ApplicationController
   def create
     # TODO call find by email or username based on context
     @user = User.find_by_credentials(params[:user][:username], params[:user][:email], params[:user][:password])
-
     if @user
 			login(@user)
 			render "api/users/show"
 		else
-			@errors = ['invalid credentials']
-			render json: [@errors]
+			@errors = ['Invalid credentials, please try again']
+			render json: [@errors], status: 401
 		end
   end
 
@@ -19,7 +18,7 @@ class Api::SessionsController < ApplicationController
 			login(@user)
 			redirect_to root_url
 		else
-			@errors = ['invalid credentials']
+			@errors = ['invalid credentials, please try again']
 			render json: [@errors]
 		end
   end

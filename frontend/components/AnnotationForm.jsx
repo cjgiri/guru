@@ -31,13 +31,15 @@ var AnnotationForm = React.createClass({
       top: this.props.pos
     };
     if (this.state.displayAnnotationForm){
+
       return(
         <div className="annotation-area" style={divStyle}>
           <form>
+            <span className="annotatable-text"> {this.props.selectedText}</span>
             <label>
-              <textarea onChange={this.setAnnotationBody}/>''
+              <textarea onChange={this.setAnnotationBody}/>
             </label>
-            <input onClick={this.submitAnnotation} type="submit" value="Submit Annotation"className="begin-annotation" />
+            <input onClick={this.submitAnnotation} type="submit" value="Submit Annotation" className="begin-annotation" />
             <button className="annot-button cancel-annotation" onClick={this.toggleForm}>Cancel</button>
           </form>
         </div>

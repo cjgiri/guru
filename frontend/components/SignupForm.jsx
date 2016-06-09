@@ -1,6 +1,7 @@
 var React = require("react"),
     ApiUtil = require("../util/apiUtil"),
-    UserStore = require("../stores/user_store");
+    UserStore = require("../stores/user_store"),
+    ErrorStore = require("../stores/error_store");
 
 var ReactRouter = require('react-router'),
     hashHistory = ReactRouter.hashHistory;
@@ -8,24 +9,29 @@ var ReactRouter = require('react-router'),
 var SignupForm = React.createClass({
   getInitialState:function(){
     return({
+      errors: [],
       username: "",
       email: "",
       password: ""
     });
   },
   componentDidMount: function(){
-    UserStore.addListener(this.login_success_check);
+    this.errorListener = ErrorStore.addListener(this.errorCheck);
   },
-  login_success_check:function(){
-    // if (UserStore.isUserLoggedIn()) {
-    //   hashHistory.push("/");
-    // }
+  componentWillUnmount: function(){
+    this.errorListener.remove();
+  },
+  errorCheck: function(){
+    var errors = ErrorStore.formErrors("login");
+    this.setState({errors: errors});
   },
   loginUser: function(e){
     e.preventDefault();
-    ApiUtil.createUser(this.state);
-    // TODO make modal toggle on valid signup
-    this.props.toggleSignUpModal()
+    ApiUtil.createUser({
+      username: this.state.username,
+      email: this.state.email,
+      password: this.state.password
+    }, this.props.toggleSignUpModal);
   },
   setPass: function(e){
     this.setState({password: e.target.value})
@@ -50,15 +56,19 @@ var SignupForm = React.createClass({
       password: "password",
       username: "guest"
     };
-    this.props.toggleSignUpModal()
-    ApiUtil.loginUser(credentials);
+    ApiUtil.loginUser(credentials, this.props.toggleSignUpModal);
   },
   render:function(){
+    var errorModal = null;
+    if(this.state.errors.length !== 0){
+      errorModal = <div className="errors-flash"> {this.state.errors}</div>;
+    }
     if (this.props.modal === "signup"){
       return(
         <div className="modal-bg" onClick={this.outerClick}>
           <div className="modal-box">
           <h1>SIGN UP</h1>
+          {errorModal}
             <div className="modal-box-detail">
               <a href="/auth/twitter" className="twitter-auth">Sign up with Twitter</a>
               <form onSubmit={this.loginUser}>

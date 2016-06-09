@@ -25,7 +25,8 @@ var LyricShow = React.createClass({
             displayAnnotationForm: false,
             displayAnnotationDetail: false,
             annotationPos: 0,
-            selectIndices:[]
+            selectIndices:[],
+            selectedText: ""
            });
   },
   textSelected: function(e){
@@ -43,6 +44,7 @@ var LyricShow = React.createClass({
         }
 
         this.setState( {
+          selectedText: selection.toString(),
           displayAnnotationForm: true,
           displayAnnotationDetail: false,
           annotationPos: e.pageY,
@@ -60,10 +62,12 @@ var LyricShow = React.createClass({
     if (e.target.dataset.annotationId && e.target.dataset.annotationId !== "none")
         // if click on a text snippet that isn't the selected one
         if (e.target.dataset.annotationId !== this.state.displayAnnotationDetail){
+
         this.setState({
           annotationPos: e.pageY,
           displayAnnotationDetail: e.target.dataset.annotationId,
-          displayAnnotationForm: false
+          displayAnnotationForm: false,
+          selectedText: e.target.innerHTML
         });
       }else{
         return false;
@@ -140,16 +144,16 @@ var LyricShow = React.createClass({
   render: function(){
     this.AnnotationForm = null;
     this.AnnotationDetail = null;
-
     if (this.state.displayAnnotationForm){
+
       this.AnnotationForm = <AnnotationForm pos={this.state.annotationPos}
-        indices={this.state.selectIndices} lyricId={this.props.routeParams.lyricId}/>
+        indices={this.state.selectIndices} lyricId={this.props.routeParams.lyricId} selectedText={this.state.selectedText}/>
     }
     if (this.state.displayAnnotationDetail){
       var annotationId = this.state.displayAnnotationDetail;
 
       var annotation = this.findAnnotation(annotationId);
-      this.AnnotationDetail = <AnnotationDetail pos={this.state.annotationPos}
+      this.AnnotationDetail = <AnnotationDetail selectedText={this.state.selectedText} pos={this.state.annotationPos}
         annotation={annotation} />
     }
 

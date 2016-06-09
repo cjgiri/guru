@@ -7,8 +7,8 @@ class Api::UsersController < ApplicationController
 			login @user
 			render "api/users/show"
 		else
-			@errors = @user.errors.full_messages
-			render "api/shared/error", status: 422
+      @errors = ['Invalid credentials, please try again']
+			render json: [@errors], status: 401
 		end
 	end
 
