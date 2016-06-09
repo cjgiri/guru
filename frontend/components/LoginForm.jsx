@@ -62,7 +62,6 @@ var LoginForm = React.createClass({
   render:function(){
     if (this.props.modal === "login"){
       var errorModal = null;
-      debugger
       if(this.state.errors.length !== 0){
         errorModal = <div className="errors-flash"> {this.state.errors}</div>;
         }
