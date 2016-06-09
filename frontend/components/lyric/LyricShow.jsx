@@ -138,7 +138,6 @@ var LyricShow = React.createClass({
     });
   },
   render: function(){
-    debugger
     this.AnnotationForm = null;
     this.AnnotationDetail = null;
 
@@ -154,8 +153,8 @@ var LyricShow = React.createClass({
         annotation={annotation} />
     }
 
-    if(!this.state.lyric){
-      return(<div>{this.props.routeParams.lyricId} </div>);
+    if(!this.state.lyric || !this.state.lyric.annotations){
+      return(<div></div>);
     }else{
       this.annotationSpans = this.annotateBody();
       return(

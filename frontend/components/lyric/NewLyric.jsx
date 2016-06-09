@@ -26,7 +26,8 @@ var NewLyric = React.createClass({
   setLyricBody: function(e){
     this.setState({lyricBody: e.target.value})
   },
-  submitLyric: function(){
+  submitLyric: function(e){
+    e.preventDefault();
     ClientLyricActions.submitLyric(this.state, function(){
       var newUrl = "/lyrics/" + arguments[0].id.toString();
       hashHistory.push(newUrl);

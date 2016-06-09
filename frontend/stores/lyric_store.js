@@ -7,7 +7,7 @@ var _lyrics= {};
 var LyricStore = new Store(Dispatcher);
 
 LyricStore.setLyric = function(lyric){
-  _lyrics.id = lyric;
+  _lyrics[lyric.id] = lyric;
 };
 
 LyricStore.setLyrics = function(lyrics){
@@ -18,7 +18,7 @@ LyricStore.setLyrics = function(lyrics){
 };
 
 LyricStore.find = function(id){
-  return _lyrics.id;
+  return _lyrics[id];
 };
 
 LyricStore.all = function(id){

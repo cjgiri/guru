@@ -19,7 +19,6 @@ var NavSearch = React.createClass({
     this.searchListener.remove();
   },
   updateSearch: function(e){
-    debugger
     e.preventDefault();
     var queryString = e.target.value;
     if (queryString === ""){
