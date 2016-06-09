@@ -1,5 +1,6 @@
 var React = require("react"),
-    UserStore = require("../stores/user_store");
+    UserStore = require("../stores/user_store"),
+    ApiUtil = require('../util/apiUtil');
 
 var AnnotationForm = React.createClass({
   getInitialState: function(){
@@ -34,16 +35,15 @@ var AnnotationForm = React.createClass({
         <div className="annotation-area" style={divStyle}>
           <form>
             <label>
-              <textarea onChange={this.setAnnotationBody}/>
+              <textarea onChange={this.setAnnotationBody}/>''
             </label>
             <input onClick={this.submitAnnotation} type="submit" value="Submit Annotation"className="begin-annotation" />
-            <button className="cancel-annotation" onClick={this.toggleForm}>Cancel</button>
+            <button className="annot-button cancel-annotation" onClick={this.toggleForm}>Cancel</button>
           </form>
         </div>
       )
     } else {
       if(UserStore.currentUser().username){
-        debugger
         return(
           <div className="annotation-area" style={divStyle}>
             <button className="begin-annotation" onClick={this.beginAnnotation}>Begin Annotation</button>

@@ -15,7 +15,7 @@ class Api::LyricController < ApplicationController
 	end
 
 	def show
-		@lyric = Lyric.find_by_id(params[:id])
+    @lyric = Lyric.includes(annotations: :author).find_by_id(params[:id])
 		if @lyric
 			render "api/lyrics/show"
 		else
@@ -33,10 +33,7 @@ class Api::LyricController < ApplicationController
 	end
 
   def search
-    # debugger
     if params[:query].present?
-      # searchParam = params[:query] + "*"
-      # @lyrics = Lyric.where("title ~ ?", searchParam)
       @lyrics = Lyric.search_by_metadata(params[:query]).limit(10);
       render "api/lyrics/search"
     else

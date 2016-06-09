@@ -22,7 +22,7 @@ class Annotation < ActiveRecord::Base
 
   def does_not_overlap
     # refactor this horrible line
-    if Annotation.where('lyric_id = ?', lyric_id).where.not('(start_char > ? AND end_char > ?) OR (start_char < ? AND end_char < ?)',end_char, end_char, start_char, start_char).any?
+    if Annotation.where('lyric_id = ?', lyric_id).where('id != ?', id).where.not('(start_char > ? AND end_char > ?) OR (start_char < ? AND end_char < ?)', end_char, end_char, start_char, start_char).any?
       errors.add(:indices, "cannot overlap")
     end
   end

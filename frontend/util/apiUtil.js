@@ -87,6 +87,26 @@ module.exports={
       error: UserActions.handleError
     })
   },
+  updateAnnotation: function(data){
+    $.ajax({
+      url: '/api/annotation',
+      method: 'PATCH',
+      data: data ,
+      success: LyricServerActions.receiveLyric,
+      error: UserActions.handleError
+    })
+  },
+  destroyAnnotation: function(id){
+    $.ajax({
+      url: "api/annotation",
+      type: "DELETE",
+      data: {
+        id: id
+      },
+      success: LyricServerActions.receiveLyric,
+      error: UserActions.handleError
+    })
+  },
   searchLyrics: function(query){
     $.ajax({
 			url: '/api/search/' + query,

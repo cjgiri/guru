@@ -151,6 +151,12 @@
     background: #ffff64;
     z-index: 4;
   }
+  .user-actions-dropdown a:hover{
+    color: #888;
+  }
+  .nav-user-actions strong:hover{
+    color: #888;
+  }
   .nav-user-actions:hover .user-actions-dropdown{
     display: block;
     right: 0px;
@@ -444,18 +450,44 @@ textarea{
   text-transform: uppercase;
   letter-spacing: .13em;
   font-weight: bold;
-  font-size: 11;
+  font-size: 14px;
   padding-bottom: 10px;
+  float: left;
+  display: block;
+}
+.annotation-area h2{
+  display: block;
+  float: left;
+  font-size: 12px;
+  padding-left: 6px;
+  padding-bottom: 10px;
+  text-decoration: underline;
 }
 .begin-annotation:hover{
   background: #eee;
   transition: background .3s ease;
 }
-.cancel-annotation{
-  border: 2px solid #e3576e;
+.annot-button{
   padding: 2px 5px;
   font-weight: bold;
   float: right;
   display: block;
-  color: #e3576e;
+  transition: background .3s ease;
+}
+.annot-button:hover{
+  background: #eee;
+  transition: background .3s ease;
+}
+.cancel-annotation{
+  border: 2px solid #FF3D00;
+  color: #FF3D00;
+}
+.edit-button{
+  border: 2px solid #009688;
+  color: #009688;
+}
+.delete-button{
+  border: 2px solid #FF3D00;
+  color: #FF3D00;
+  margin-left: 8px;
 }
