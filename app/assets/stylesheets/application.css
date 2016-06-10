@@ -120,6 +120,7 @@
     color: white;
     cursor: pointer;
     border-bottom: 1px solid #555;
+    font-weight: lighter;
   }
   .results-list li:hover{
     color: #ffff64;
