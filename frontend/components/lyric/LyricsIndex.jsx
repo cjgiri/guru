@@ -20,7 +20,6 @@ var LyricsIndex = React.createClass({
   render: function(){
   var lyricIndexItemList = "";
   if(this.state.lyrics){
-    debugger
     lyricIndexItemList =
     <ul className="lyric-index-list group">
        {this.state.lyrics.reverse().map(function (lyric) {
