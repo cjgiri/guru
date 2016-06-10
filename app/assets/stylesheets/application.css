@@ -97,9 +97,12 @@
     text-align: left;
     padding: 5px;
     background: white;
-    box-shadow: 0 0 5px #e9e9e9 inset;
     border: solid 1px #ccc;
     width: 180px;
+    font-weight: lighter;
+  }
+  .nav-search:focus{
+    box-shadow: 0 0 5px #e9e9e9 inset;
   }
   /*.search-holder-select{
     z-index: 5;
@@ -110,7 +113,7 @@
   }*/
   .results-list{
     width: 107%;
-    background: #222;
+    background: rgba( 0,0,0, .8);
   }
   .results-list li{
     padding: 7px;
