@@ -1,6 +1,6 @@
 # Guru
 
-[Guru live][heroku] **NB:** This should be a link to your production site
+[Guru live][heroku] 
 
 [heroku]: http://www.guruapp.herokuapp.com
 
