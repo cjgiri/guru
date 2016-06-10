@@ -26,6 +26,7 @@ var LyricsIndex = React.createClass({
          return <LyricIndexItem key={lyric.id} lyric={lyric} />;
        })}
      </ul>;
+     this.state.lyrics.reverse()
    }
     return(
       <div>

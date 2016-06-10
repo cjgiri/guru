@@ -12,7 +12,8 @@ var LoginForm = require('./components/LoginForm'),
     NavBar = require('./components/nav/NavBar'),
     LyricsIndex = require('./components/lyric/LyricsIndex'),
     LyricShow = require('./components/lyric/LyricShow'),
-    NewLyric = require('./components/lyric/NewLyric');
+    NewLyric = require('./components/lyric/NewLyric'),
+    Footer = require('./components/Footer');
 
 //debugging
 var ApiUtil = require('./util/apiUtil');
