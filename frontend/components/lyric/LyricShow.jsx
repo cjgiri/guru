@@ -14,6 +14,9 @@ var LyricShow = React.createClass({
   componentWillUnmount: function(){
     this.lyricListener.remove();
   },
+  componentWillReceiveProps: function(props){
+    ApiUtil.fetchLyric(parseInt(props.routeParams.lyricId));
+  },
   getInitialState: function(){
     return this.stateHelper();
   },
