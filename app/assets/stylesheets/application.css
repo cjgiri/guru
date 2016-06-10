@@ -508,10 +508,12 @@ textarea{
 .edit-button{
   border: 2px solid #009688;
   color: #009688;
+  margin-top: 5px;
 }
 .delete-button{
   border: 2px solid #FF3D00;
   color: #FF3D00;
+  margin-top: 5px;
   margin-left: 8px;
 }
 .footer{
