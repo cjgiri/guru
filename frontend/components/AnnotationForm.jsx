@@ -28,7 +28,8 @@ var AnnotationForm = React.createClass({
   },
   render: function(){
     var divStyle = {
-      top: this.props.pos
+      top: this.props.pos,
+      transform: "translateY(-50%)"
     };
     if (this.state.displayAnnotationForm){
 

@@ -41,7 +41,8 @@ var AnnotationDetail = React.createClass({
   },
   render: function(){
     var divStyle = {
-      top: this.props.pos
+      top: this.props.pos,
+      transform: "translateY(-60%)"
     };
     var editOptions= null;
     if (this.state.editing){

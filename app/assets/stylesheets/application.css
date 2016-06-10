@@ -440,7 +440,7 @@ textarea{
   right: 165px;
   border-left: 5px solid #99a7ee;
   padding-left: 16px;
-  max-width: 325px;
+  width: 325px;
   overflow-wrap: normal;
 }
 .annotation-area textarea{
