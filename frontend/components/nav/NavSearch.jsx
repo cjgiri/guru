@@ -14,9 +14,17 @@ var NavSearch = React.createClass({
   },
   componentDidMount: function(){
     this.searchListener = SearchStore.addListener(this.updateSearchResults);
+    window.addEventListener('click', this.checkSearchClick);
   },
   componentWillUnmount: function(){
     this.searchListener.remove();
+    window.removeEventListener(this.checkSearchClick);
+  },
+  checkSearchClick: function(e){
+    if (!this.domNode.contains(e.target)){
+      document.getElementById('search-bar').value = '';
+      this.setState({focused: false, results: []});
+    }
   },
   updateSearch: function(e){
     e.preventDefault();
@@ -32,6 +40,7 @@ var NavSearch = React.createClass({
     this.setState( {results: SearchStore.all()} )
   },
   styleSearch: function(e){
+    debugger
     var newFocusedState = !this.state.focused
     if (!newFocusedState){
       document.getElementById('search-bar').value = '';
@@ -40,9 +49,13 @@ var NavSearch = React.createClass({
     this.setState({focused: newFocusedState});
   },
   searchRedirect: function(e){
+    debugger
     document.getElementById('search-bar').value = '';
     hashHistory.push('/lyrics/'+e.target.dataset.lyricId);
     this.setState({focused: false, results: []});
+  },
+  getDomNode: function(node){
+    this.domNode = node;
   },
   render: function(){
     var divClass = "nav-search-holder";
@@ -52,9 +65,8 @@ var NavSearch = React.createClass({
       placeholder = "";
     }
     return(
-      <div className={divClass}>
-        <input id="search-bar" placeholder={placeholder} className={inputClass} onFocus={this.styleSearch}
-          onBlur={this.styleSearch} onChange={this.updateSearch}>
+      <div className={divClass} ref={this.getDomNode}>
+        <input id="search-bar" placeholder={placeholder} className={inputClass} onFocus={this.styleSearch} onChange={this.updateSearch}>
         </input>
         <ul className="results-list">
           {this.state.results.map(function(object, index){
