@@ -20,9 +20,10 @@ var LyricsIndex = React.createClass({
   render: function(){
   var lyricIndexItemList = "";
   if(this.state.lyrics){
+    debugger
     lyricIndexItemList =
     <ul className="lyric-index-list group">
-       {this.state.lyrics.map(function (lyric) {
+       {this.state.lyrics.reverse().map(function (lyric) {
          return <LyricIndexItem key={lyric.id} lyric={lyric} />;
        })}
      </ul>;

@@ -24,7 +24,8 @@ class Api::LyricController < ApplicationController
 	end
 
 	def index
-		@lyrics = Lyric.all
+		@lyrics = Lyric.all.order(created_at: :desc)
+    debugger
 		if @lyrics
 			render "api/lyrics/index"
 		else
