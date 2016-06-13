@@ -10,13 +10,13 @@
 
 Guru is a lyric annotation app inspired by Genius and built on Ruby on Rails and React. When complete, it will at minimum meet the following criteria:
 
-- [ ] New account creation, login, and guest/demo login
-- [ ] Smooth, bug-free navigation
-- [ ] Adequate seed data to demonstrate the site's features
-- [ ] Core lyric upload and annotation functionality to match Genius
+- [x] New account creation, login, and guest/demo login
+- [x] Smooth, bug-free navigation
+- [x] Adequate seed data to demonstrate the site's features
+- [x] Core lyric upload and annotation functionality to match Genius
 - [x] Hosting on Heroku
 - [x] Beautiful CSS
-- [ ] A production README, replacing this README
+- [x] A production README, replacing this README
 
 ## Product Goals and Priorities
 
@@ -27,10 +27,10 @@ progress. Put an x between the brackets for a checkmark: [x] -->
 
 - [x] Create an account (MVP)
 - [x] Log in / Log out, including as a Guest/Demo User (MVP)
-- [ ] Create, read, edit, and delete lyrics (MVP)
-- [ ] Create, read, edit, and delete annotations using text highlighting for selection (MVP)
-- [ ] Allow music upload for playback on lyric show page (hopeful feature, but not MVP)
-- [ ] Add upvoteable comments to annotations and lyrics (hopeful feature, but not MVP)
+- [x] Create, read, edit, and delete lyrics (MVP)
+- [x] Create, read, edit, and delete annotations using text highlighting for selection (MVP)
+- [x] Allow music upload for playback on lyric show page (hopeful feature, but not MVP)
+- [x] Add upvoteable comments to annotations and lyrics (hopeful feature, but not MVP)
 
 ## Design Docs
 * [View Wireframes][views]
@@ -53,7 +53,7 @@ progress. Put an x between the brackets for a checkmark: [x] -->
 
 - [x] create new project
 - [x] create `User` model
-- [ ] authentication
+- [x] authentication
 - [x] user signup/signin pages
 - [x] blank landing page after signin
 
@@ -64,7 +64,7 @@ the API.
 
 - [x] create `Lyric` model
 - [x] seed the database with a small amount of test data
-- [ ] CRUD API for lyrics (`LyricsController`)
+- [x] CRUD API for lyrics (`LyricsController`)
 - [x] jBuilder views for lyrics
 - [x] setup Webpack & Flux scaffold
 - [x] setup `APIUtil` to interact with the API
@@ -98,7 +98,7 @@ user interface.
 
 - [x] create `Annotation` model
 - build out API, Flux loop, and components for:
-  - [ ] Annotation CRUD
+  - [x] Annotation CRUD
   - [x] annotations can only be added to lyrics, cannot override existing annotations
   - [x] annotation selection is done directly from in-lyric links
 - Use CSS to style new views
@@ -108,9 +108,9 @@ user interface.
 
 **objective:** Make the site feel more cohesive and awesome.
 
-- [ ] Get feedback on my UI from others
-- [ ] Refactor HTML classes & CSS rules
-- [ ] Add modals, transitions, and other styling flourishes.
+- [x] Get feedback on my UI from others
+- [x] Refactor HTML classes & CSS rules
+- [x] Add modals, transitions, and other styling flourishes.
 
 ### Bonus Features (TBD)
 - [ ] Enable video link embeds to play music with on lyric show
