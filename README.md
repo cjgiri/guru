@@ -1,8 +1,8 @@
 # Guru
 
-[Guru live][heroku] 
+[Guru live][heroku]
 
-[heroku]: http://www.guruapp.herokuapp.com
+[heroku]: guruapp.herokuapp.com
 
 Guru is a full-stack web application inspired by Genius.  It utilizes Ruby on Rails on the backend, a PostgreSQL database, and React.js with a Flux architectural framework on the frontend.  
 
