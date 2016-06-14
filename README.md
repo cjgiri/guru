@@ -8,10 +8,6 @@ Guru is a full-stack web application inspired by Genius.  It utilizes Ruby on Ra
 
 ## Features & Implementation
 
-### Single-Page App
-
-Thanks to React.js, Guru is all on a single page! Even Genius spread across multiple pages that require a refresh.
-
 ### Lyric Creation
 
 All lyrics are stored in a `lyrics` table, and managed on the front end in a `lyric_store`. Notably, lyric
