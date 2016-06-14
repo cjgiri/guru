@@ -12,7 +12,13 @@ Guru is a full-stack web application inspired by Genius.  It utilizes Ruby on Ra
 
 All lyrics are stored in a `lyrics` table, and managed on the front end in a `lyric_store`. Notably, lyric
  upload does not require the user to upload album art. Instead, the art is fetched on the fly from the
- last.fm api.
+ last.fm api. If the api does not return a usable image, the paperclip gem instead uses a global default image.
+
+![album-art]
+
+
+
+[album-art]: ./docs/screencaps/albumart.png
 
 ### Annotations
 
@@ -21,6 +27,8 @@ At the database level, annotations are stored in an `annotations` table, and con
 a `body`, `start_char` and `end_char`, and are related to users via `user_id` and lyrics via
 `lyric_id`. Annotations are displayed in <span> tags that are used to delineate: whether or not a lyric is annotated, its absolute start index, and its annotation id.
 
+![annotation]
+[annotation]: ./docs/screencaps/annotation.png
 To create a new annotation, a user must simply highlight the text they would like to annotate. If they are not
 logged in, nothing happens. Otherwise, a document.getSelection() finds the indices relative to the current span, and sums it to its absolute start position (stored as HTML data). This brings up an annotation edit form, positioned absolutely next to the selection.  The annotation is saved without a page refresh and immediately appears on the text. To change an annotation, its author can simply select an annotation and click 'edit' or 'delete'.
 
